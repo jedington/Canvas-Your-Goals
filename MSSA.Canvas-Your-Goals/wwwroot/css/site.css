@@ -1,0 +1,328 @@
+﻿/* Main CSS */
+html {
+    min-height: 100%;
+    font-size: 12px;
+}
+@media (min-width: 1200px) {
+    /* large screens */
+    html {
+        font-size: 13px;
+    }
+}
+@media (max-width: 800px) {
+    /* mobile / small screens */
+    html {
+        font-size: 11px;
+    }
+}
+
+header {
+    position: relative;
+    z-index: 98 !important;
+    background: var(--color-secondary, #333333);
+}
+
+body {
+    /* https://getbootstrap.com/docs/4.2/content/reboot/#native-font-stack */
+    font-family: 'Source Sans', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: var(--font-color, #f8f8f8);
+    background: var(--color-primary, #262626);
+}
+
+.main {
+    display: flex;
+    display: -ms-flexbox;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+    position: relative;
+    z-index: 99 !important;
+}
+@media (max-width: 800px) {
+    /* mobile / small screens */
+    .main {
+        display: inherit;
+    }
+}
+
+form, table {
+    white-space: nowrap;
+}
+@media (max-width: 800px) {
+    form, table {
+        margin-top: 130px;
+    }
+}
+
+table {
+    background: var(--color-secondary, #333333);
+}
+
+.menu {
+    display: flex;
+    display: -ms-flexbox;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+    position: relative;
+    z-index: 99 !important;
+}
+
+.title {
+    text-transform: none;
+    font-variant: small-caps;
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
+    white-space: nowrap;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 compatibility */
+    margin: 0 auto;
+}
+
+.github {
+    width: 60%;
+}
+@media (max-width: 800px) {
+    .github {
+        width: 40%;
+    }
+}
+
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.flexit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.container-custom {
+    border-radius: 3px;
+    background: var(--color-secondary, #333333);
+    margin: 6px 6px 6px 6px;
+}
+
+.lift {
+    margin-bottom: 30px;
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 30px;
+    background: var(--color-secondary, #333333);
+}
+
+
+/* Text Sizing & Colors */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--font-color, #f8f8f8);
+    text-align: center;
+}
+
+span {
+    font-size: 0;
+}
+
+h1 {
+    font-size: 3rem;
+}
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2.75rem;
+    }
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+@media (max-width: 800px) {
+    h2 {
+        font-size: 2.25rem;
+    }
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+@media (max-width: 800px) {
+    h3 {
+        font-size: 1.5rem;
+    }
+}
+
+p, em, b, td, th, ul, li {
+    font-size: 1.25rem;
+}
+@media (max-width: 800px) {
+    p, em, b, td, th {
+        font-size: 1.25rem;
+    }
+}
+
+a {
+    color: var(--color-link, #329fba);
+}
+
+a:hover {
+    color: var(--color-link-hover, #12cdea);
+}
+
+a:visited {
+    color: var(--color-link-hover, #12cdea);
+}
+
+
+/* Theme Options */
+.theme-light {
+    --color-primary: #f8f8f8;
+    --color-secondary: #eaeaea;
+    --color-link: #0060df;
+    --color-link-hover: #2b85c4;
+    --font-color: #262626;
+}
+
+.theme-calm {
+    --color-primary: #b3c4e3;
+    --color-secondary: #b3daff;
+    --color-link: #2682b4;
+    --color-link-hover: #236400;
+    --font-color: #222222;
+}
+
+.theme-dark {
+    --color-primary: #262626;
+    --color-secondary: #333333;
+    --color-link: #329fba;
+    --color-link-hover: #12cdea;
+    --font-color: #f8f8f8;
+}
+
+.theme {
+    margin-left: auto;
+    order: 2;
+}
+
+
+/* Buttons */
+.btn-3d {
+    position: relative;
+    display: inline-block;
+    font-size: 16px;
+    padding: 5px 15px;
+    color: #333333;
+    margin: 10px 10px 10px;
+    border-radius: 6px;
+    text-align: center;
+    transition: top .04s linear;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.btn-3d.blue:hover {
+    background-color: #699DD1;
+}
+
+.btn-3d.purple:hover {
+    background-color: #D19ECB;
+}
+
+.btn-3d.yellow:hover {
+    background-color: #F0D264;
+}
+
+.btn-3d:active {
+    top: 9px;
+}
+
+.btn-3d.blue {
+    background-color: #6DA2D9;
+    box-shadow: 0 0 0 1px #6698cb inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 rgba(110, 164, 219, .7), 0 8px 0 1px rgba(0, 0, 0, .4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+}
+
+.btn-3d.blue:active {
+    box-shadow: 0 0 0 1px #6191C2 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+.btn-3d.purple {
+    background-color: #cb99c5;
+    box-shadow: 0 0 0 1px #cb99c5 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 rgba(189, 142, 183, .7), 0 8px 0 1px rgba(0, 0, 0, .4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+}
+
+.btn-3d.purple:active {
+    box-shadow: 0 0 0 1px #cb99c5 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+.btn-3d.yellow {
+    background-color: #F0D264;
+    box-shadow: 0 0 0 1px #F0D264 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 rgba(196, 172, 83, .7), 0 8px 0 1px rgba(0, 0, 0, .4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+}
+
+.btn-3d.yellow:active {
+    box-shadow: 0 0 0 1px #F0D264 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+
+/* Validations */
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    background-color: #fee;
+    border: 1px solid #f00;
+}
+
+.validation-summary-errors {
+    color: #f00;
+    font-weight: bold;
+}
+
+.validation-summary-valid {
+    display: none;
+}

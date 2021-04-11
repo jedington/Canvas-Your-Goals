@@ -1,0 +1,39 @@
+﻿@model MSSA.Canvas_Your_Goals.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<body>
+    <h3 class="bg-primary text-white m-2 p-2 ">
+        @ViewData["Title"]
+    </h3>
+    <div asp-validation-summary="All"></div>
+    <form asp-controller="User" asp-action="Login" method="post">
+        <table class="centered table-sm bg-transparent">
+            <tr>
+                <th asp-for="Email">
+                    Email:
+                </th>
+                <td>
+                    <input asp-for="Email" type="email" class="form-control" placeholder="Input your Email" />
+                </td>
+            </tr>
+            <tr>
+                <th asp-for="Password">
+                    Password:
+                </th>
+                <td>
+                    <input asp-for="Password" type="password" class="form-control" placeholder="Input your Password" />
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center" colspan="2">
+                    <button type="submit" class="btn-3d blue">
+                        Login!
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>

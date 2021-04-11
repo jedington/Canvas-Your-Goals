@@ -1,0 +1,66 @@
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
+using MSSA.Canvas_Your_Goals.Models;
+
+namespace MSSA.Canvas_Your_Goals.Controllers
+{
+    public class UserController : Controller
+    {
+        public IActionResult Landing()
+            // not created yet -- placeholder
+            => View();
+        // Landing method ends
+        
+        [HttpGet]
+        public IActionResult Register()
+            => View();
+        [HttpPost]
+        public IActionResult Register(User userReg)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Landing");
+            }
+            return View(userReg);
+        } // Register method ends
+
+        [HttpGet]
+        public IActionResult Login()
+            => View();
+        [HttpPost]
+        public IActionResult Login(User userLog)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Landing");
+            }
+            return View(userLog);
+        } // Login method ends
+
+        [HttpGet]
+        public IActionResult ForgotPassword()
+            => View();
+        [HttpPost]
+        public IActionResult ForgotPassword(User userReq)
+        {
+            if (ModelState.IsValid)
+            {
+                return View("ResetPassword");
+            }
+            return View(userReq);
+        } // ForgotPassword method ends
+
+        [HttpGet]
+        public IActionResult ResetPassword()
+            => View();
+        [HttpPost]
+        public IActionResult ResetPassword(User userPwd)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Landing");
+            }
+            return View(userPwd);
+        } // ResetPassword method ends
+    } // class ends
+} // namespace ends
