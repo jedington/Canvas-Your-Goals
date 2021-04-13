@@ -4,37 +4,36 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MSSA.Canvas_Your_Goals.Models
 {
+    [Table("Goal")]
     public class Goal
     {
-        // fields & properties
-        
         // [HiddenInput(DisplayValue = false)]
-        // [Key, DatabaseGenerated()]
-        public int? GoalId { get; set; } // goalId property ends (102)
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int? GoalId { get; set; }
 
         // [HiddenInput(DisplayValue = false)]
-        public int? UserId { get; set; } // userId property ends (102)
+        [ForeignKey(nameof(User.UserId))]
+        public int? UserId { get; set; }
 
-        [MaxLength(30, ErrorMessage = "Name is limited to 30 total characters")]
+        [ForeignKey(nameof(VisionBoard.VisionBoardId))]
+        public int? VisionBoardId { get; set; }
+
+        [MaxLength(30, ErrorMessage = "Goal Name is Limited to 30 total characters")]
         [Required(ErrorMessage = "A Name is Required")]
-        public string Goalname { get; set; } // Goalname property ends (102)
+        public string GoalName { get; set; }
 
-        public string Priority { get; set; } // Priority property ends (102)
+        public string Priority { get; set; }
 
-        public string Status { get; set; } // Status property ends (102)
+        public string Status { get; set; }
 
-        public string Type { get; set; } // Type property ends (102)
+        public string Type { get; set; }
 
-        public DateTime? Startdate { get; set; } // Startdate property ends (102)
+        public DateTime? StartDate { get; set; }
         
-        public DateTime? Enddate { get; set; } // Enddate property ends (102)
+        public DateTime? EndDate { get; set; }
 
         // [Display(Name = "Input what the goal is about")]
-        [MaxLength(2000, ErrorMessage = "This section is limited to 2000 characters")]
-        public string Details { get; set; } // Goalname property ends (102)
-
-        // constructors
-
-        // methods
-    }
-}
+        [MaxLength(2000, ErrorMessage = "Details is Limited to 2000 characters")]
+        public string Details { get; set; }
+    } // class ends
+} // namespace ends

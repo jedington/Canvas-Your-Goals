@@ -1,0 +1,13 @@
+﻿@model IQueryable<User>
+
+<ul>
+    @foreach (User u in Model)
+    {
+        <li>
+            @u.Email
+            @u.Password
+            @u.SecurityHint
+            @u.SecurityAnswer
+        </li>
+    }
+</ul>

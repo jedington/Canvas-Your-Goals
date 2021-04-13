@@ -1,16 +1,22 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MSSA.Canvas_Your_Goals.Models;
 
 namespace MSSA.Canvas_Your_Goals.Controllers
 {
     public class UserController : Controller
     {
-        public IActionResult Landing()
-            // not created yet -- placeholder
-            => View();
-        // Landing method ends
+        private int _pageSize = 10;
+        private IUserRepository _repository;
+
+
+        // constructors
+        public UserController(IUserRepository repository)
+            => _repository = repository;
+        // UserController const ends
         
+
+        // methods
+        // create
         [HttpGet]
         public IActionResult Register()
             => View();
@@ -19,11 +25,13 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Landing");
+                return RedirectToAction("Index");
             }
             return View(userReg);
         } // Register method ends
 
+
+        // read
         [HttpGet]
         public IActionResult Login()
             => View();
@@ -32,7 +40,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Landing");
+                return RedirectToAction("Index");
             }
             return View(userLog);
         } // Login method ends
@@ -50,6 +58,8 @@ namespace MSSA.Canvas_Your_Goals.Controllers
             return View(userReq);
         } // ForgotPassword method ends
 
+
+        // update
         [HttpGet]
         public IActionResult ResetPassword()
             => View();
@@ -58,9 +68,14 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Landing");
+                return RedirectToAction("Index");
             }
             return View(userPwd);
         } // ResetPassword method ends
+
+
+        // delete
+
+
     } // class ends
 } // namespace ends

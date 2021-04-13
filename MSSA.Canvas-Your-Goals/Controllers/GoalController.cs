@@ -1,21 +1,24 @@
-﻿using System;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using MSSA.Canvas_Your_Goals.Models;
+using MSSA.Canvas_Your_Goals.Models.ViewModels;
 
 namespace MSSA.Canvas_Your_Goals.Controllers
 {
     public class GoalController : Controller
     {
-        [HttpGet]
-        public IActionResult GoalList()
-            // not created yet -- placeholder
-            // go to database and pull user's goals
-            // have View list all their goals
-            => View();
-        // GoalList method ends
+        private int _pageSize = 10;
+        private IGoalRepository _repository;
 
 
-        // Create
+        // constructors
+        public GoalController(IGoalRepository repository)
+            => _repository = repository;
+        // GoalController const ends
+
+        
+        // methods
+        //// Create
         [HttpGet]
         public IActionResult Add()
             => View();
@@ -24,66 +27,83 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         {
             if (ModelState.IsValid)
             {
+                _repository.CreateGoal(addGoal);
                 return RedirectToAction("Details");
             }
             return View(addGoal);
         } // Add method ends
 
 
-        // Read
-        public IActionResult Details(int id)
+        //// Read
+        public IActionResult Index(int goalPage = 1)
         {
-            // go to databasse and get 1 goal on the id
-            // have view display that goal
-
-            // pretend fake database
-            Goal goalOne = new Goal
+            IQueryable<Goal> allGoals = _repository.GetAllGoals();
+            IQueryable<Goal> someGoals = allGoals
+                .OrderBy(goal => goal.GoalId)
+                .Skip((goalPage - 1) * _pageSize)
+                .Take(_pageSize);
+            PagingInfo pInfo = new PagingInfo
             {
-                GoalId = 1,
-                UserId = 1,
-                Goalname = "MSSA Classes",
-                Priority = "High",
-                Status = "In Progress",
-                Type = "Education",
-                Startdate = Convert.ToDateTime("01-11-2021"),
-                Enddate = Convert.ToDateTime("05-21-2021"),
-                Details = "Working through the course!"
+                TotalItems = allGoals.Count(),
+                CurrentPage = goalPage,
+                ItemsPerPage = _pageSize
             };
-            return View(goalOne);
+            ViewBag.Paging = pInfo;
+            ViewBag.ProductCount = allGoals.Count();
+            return View(someGoals);
+        } // Index method ends
+        
+        public IActionResult Details(int goalId)
+        {
+            Goal goal = _repository.GetGoalById(goalId);
+            if (goal != null)
+            {
+                return View(goal);
+            }
+            return RedirectToAction("Index");
         } // Details method ends
 
 
-        // update
+        //// update
         [HttpGet]
-        public IActionResult Edit()
+        public IActionResult Edit(int goalId)
         {
-            Goal goalOne = new Goal
+            Goal goal = _repository.GetGoalById(goalId);
+            if (goal != null)
             {
-                GoalId = 1,
-                UserId = 1,
-                Goalname = "MSSA Classes",
-                Priority = "High",
-                Status = "In Progress",
-                Type = "Education",
-                Startdate = Convert.ToDateTime("01/11/2021"),
-                Enddate = Convert.ToDateTime("05/21/2021"),
-                Details = "Working through the course!"
-            };
-            return View(goalOne);
+                return View(goal);
+            }
+            return RedirectToAction("Index");
         }
         [HttpPost]
         public IActionResult Edit(Goal editGoal)
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Details");
+                _repository.UpdateGoal(editGoal);
+                return RedirectToAction("Index", 
+                    new { goalId = editGoal.GoalId } );
             }
             return View(editGoal);
         } // Edit method ends
 
 
-        // delete
-
-
+        //// delete
+        [HttpGet]
+        public IActionResult Delete(int goalId)
+        {
+            Goal goal = _repository.GetGoalById(goalId);
+            if (goal != null)
+            {
+                return View(goal);
+            }
+            return RedirectToAction("Index");
+        } // Delete HttpGet method ends
+        [HttpPost]
+        public IActionResult DeleteAction(int goalId)
+        {
+            _repository.DeleteGoal(goalId);
+            return RedirectToAction("Index");
+        } // Delete HttpPost method ends
     } // class ends
 } // namespace ends

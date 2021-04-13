@@ -1,7 +1,7 @@
 ﻿@model Goal
 
 @{
-    ViewData["Title"] = "Goal Details";
+    ViewData["Title"] = "Delete Goal";
 }
 
 <body>
@@ -40,15 +40,19 @@
             </tr>
             <tr>
                 <td class="text-center" colspan="2">
-                    <a class="btn btn-info ml-1 mr-1" asp-controller="Goal" asp-action="Index">
-                        Back
-                    </a>
-                    <a class="btn btn-warning ml-1 mr-1" asp-controller="Goal" asp-action="Edit">
-                        Edit
-                    </a>
-                    <a class="btn btn-danger ml-1 mr-1" asp-controller="Goal" asp-action="Delete">
-                        Delete
-                    </a>
+                    <h2> Are You Sure? </h2>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center" colspan="2">
+                    <form method="post">
+                        <button asp-controller="Goal" asp-action="DeleteAction" asp-route-goalId="@Model.GoalId">
+                            Delete
+                        </button>
+                        <button asp-controller="Goal" asp-action="Index" formmethod="get">
+                            Cancel
+                        </button>
+                    </form>
                 </td>
             </tr>
         </table>

@@ -13,33 +13,13 @@
         <form asp-controller="Goal" asp-action="Edit" method="post">
             <table class="centered table-bordered table-striped table-sm">
                 <tr>
-                    <th>
-                        Goal Id:
-                    </th>
+                    <th>Goal Name:</th>
                     <td>
-                        <input asp-for="GoalId" value="@Model.GoalId" type="hidden" />
+                        <input asp-for="GoalName" value="@Model.GoalName" />
                     </td>
                 </tr>
                 <tr>
-                    <th>
-                        User Id:
-                    </th>
-                    <td>
-                        <input asp-for="UserId" value="@Model.UserId" type="hidden" />
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Goal Name:
-                    </th>
-                    <td>
-                        <input asp-for="Goalname" value="@Model.Goalname" />
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Priority:
-                    </th>
+                    <th>Priority:</th>
                     <td>
                         <select asp-for="Priority">
                             <option value=""> @Model.Priority </option>
@@ -51,9 +31,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>
-                        Status:
-                    </th>
+                    <th>Status:</th>
                     <td>
                         <select asp-for="Status">
                             <option value=""> @Model.Status </option>
@@ -65,9 +43,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>
-                        Type:
-                    </th>
+                    <th>Type:</th>
                     <td>
                         <select asp-for="Type">
                             <option value=""> @Model.Type </option>
@@ -81,25 +57,19 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>
-                        Start Date:
-                    </th>
+                    <th>Start Date:</th>
                     <td>
-                        <input asp-for="Startdate" type="date" value="@Model.Startdate" />
+                        <input asp-for="StartDate" type="date" value="@Model.StartDate" />
                     </td>
                 </tr>
                 <tr>
-                    <th>
-                        End Date:
-                    </th>
+                    <th>End Date:</th>
                     <td>
-                        <input asp-for="Enddate" type="date" value="@Model.Enddate" />
+                        <input asp-for="EndDate" type="date" value="@Model.EndDate" />
                     </td>
                 </tr>
                 <tr>
-                    <th>
-                        Details:
-                    </th>
+                    <th>Details:</th>
                     <td>
                         <textarea asp-for="Details" type="text" value="@Model.Details"></textarea>
                     </td>

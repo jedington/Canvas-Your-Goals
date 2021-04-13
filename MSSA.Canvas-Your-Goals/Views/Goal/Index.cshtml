@@ -1,0 +1,50 @@
+﻿@model IQueryable<Goal>
+
+@{
+    ViewData["Title"] = "Goal List";
+}
+
+<h2> @ViewData["Title"] </h2>
+<hr />
+
+<table class="centered table-bordered table-striped table-sm">
+    <tr>
+        <th>Goal</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th>Type</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+    </tr>
+    @foreach (Goal item in Model)
+    {
+    <tr>
+        <td>
+            <a asp-controller="Goal" asp-action="Details" asp-route-goalId="@item.GoalId">
+                Product: @item.GoalName
+            </a>
+        </td>
+        <td> Description: @item.Priority </td>
+        <td> Price: @item.Status </td>
+        <td> Description: @item.Type </td>
+        <td> Price: @item.StartDate </td>
+        <td> Description: @item.EndDate </td>
+    </tr>
+    }
+    <tr>
+        <td colspan="5">
+            <a asp-controller="Goal" asp-action="Add"> Add a new Goal! </a>
+        </td>
+    </tr>
+</table>
+
+<span>
+    Page @ViewBag.Paging.CurrentPage of @ViewBag.Paging.TotalPages() // go to:
+</span>
+@for (int i = 1; i <= ViewBag.GoalCount / 10; i++)
+{
+    <a asp-controller="Goal" asp-action="Index" asp-route-productPage="@i">
+        Page @(i)
+    </a>
+    @: &nbsp; | &nbsp;
+}
