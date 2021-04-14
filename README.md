@@ -163,7 +163,7 @@ Project is just barely starting. Listing out both things that are 'to-do' as wel
 
 1. Database create with T-SQL / SSMS. 🗹
 2. Three theme colors through JavaScript. 🗹
-3. Collaborate database, backend, frontend. ☐
+3. Collaborate database, backend, frontend. 🗹
 4. Manage basic authentication / authorization. ☐
 6. Complete project's basic functions to release. ☐
 7. Modal page 'popups' through Bootstrap. ☐ (optional)
