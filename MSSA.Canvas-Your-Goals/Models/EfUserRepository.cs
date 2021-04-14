@@ -52,7 +52,6 @@ namespace MSSA.Canvas_Your_Goals.Models
             {
                 userToUpdate.Email = user.Email;
                 userToUpdate.Password = user.Password;
-                userToUpdate.ConfirmPassword = user.ConfirmPassword;
                 userToUpdate.SecurityHint = user.SecurityHint;
                 userToUpdate.SecurityAnswer = user.SecurityAnswer;
                 _context.SaveChanges();

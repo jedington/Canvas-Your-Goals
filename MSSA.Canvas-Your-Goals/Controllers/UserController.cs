@@ -5,7 +5,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
 {
     public class UserController : Controller
     {
-        private int _pageSize = 10;
+        // this entire controller--along with it's relevant model/views needs modification
         private IUserRepository _repository;
 
 

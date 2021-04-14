@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using MSSA.Canvas_Your_Goals.Models;
-using MSSA.Canvas_Your_Goals.Models.ViewModels;
 
 namespace MSSA.Canvas_Your_Goals.Controllers
 {
@@ -48,9 +47,12 @@ namespace MSSA.Canvas_Your_Goals.Controllers
                 CurrentPage = goalPage,
                 ItemsPerPage = _pageSize
             };
-            ViewBag.Paging = pInfo;
-            ViewBag.ProductCount = allGoals.Count();
-            return View(someGoals);
+            GoalListViewModel gLvM = new GoalListViewModel
+            {
+                PagingInfo = pInfo,
+                Goals = someGoals
+            };
+            return View(gLvM);
         } // Index method ends
         
         public IActionResult Details(int goalId)

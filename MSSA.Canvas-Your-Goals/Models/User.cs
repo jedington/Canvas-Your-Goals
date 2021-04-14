@@ -1,11 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MSSA.Canvas_Your_Goals.Models
 {
     [Table("User")]
     public class User
     {
+        [HiddenInput(DisplayValue = false)]
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? UserId { get; set; } // UserId property ends (102)
         
@@ -17,10 +19,6 @@ namespace MSSA.Canvas_Your_Goals.Models
         [MaxLength(40, ErrorMessage = "Password is limited to 40 total characters")]
         //- [Required(ErrorMessage = "A Password is Required")]
         public string Password { get; set; } // Password property ends (102)
-
-        //- [CompareAttribute("Password", ErrorMessage = "Passwords do not match.")]
-        //- [Required(ErrorMessage = "Please Confirm your Password")]
-        public string ConfirmPassword { get; set; } // ConfirmPassword property ends (102)
 
         [MaxLength(40, ErrorMessage = "Hint is limited to 40 total characters")]
         //- [Required(ErrorMessage = "Security Hint is Required")]

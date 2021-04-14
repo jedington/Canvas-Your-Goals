@@ -5,83 +5,79 @@
 }
 
 <body>
-    <h3 class="bg-primary text-white m-2 p-2">
-        @ViewData["Title"]
-    </h3>
-    <fieldset>
-        <div asp-validation-summary="All"></div>
-        <form asp-controller="Goal" asp-action="Add" method="post">
-            <table class="centered table-bordered table-striped table-sm">
-                <tr>
-                    <th> Goal Name: </th>
-                    <td> <input asp-for="GoalName" /> </td>
-                </tr>
-                <tr>
-                    <th> Priority: </th>
-                    <td>
-                        <select asp-for="Priority">
-                            <option value=""> - Select - </option>
-                            <option value="Highest">Highest</option>
-                            <option value="High">High</option>
-                            <option value="Medium">Medium</option>
-                            <option value="Low">Low</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th> Status: </th>
-                    <td>
-                        <select asp-for="Status">
-                            <option value=""> - Select - </option>
-                            <option value="Finished">Finished</option>
-                            <option value="In Progress">In Progress</option>
-                            <option value="Problem">Problem</option>
-                            <option value="Waiting">Waiting</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th> Type: </th>
-                    <td>
-                        <select asp-for="Type">
-                            <option value=""> - Select - </option>
-                            <option value="Education">Education</option>
-                            <option value="Health">Health</option>
-                            <option value="Location">Location</option>
-                            <option value="Income">Income</option>
-                            <option value="Personal">Personal</option>
-                            <option value="Professional">Professional</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th> Start Date: </th>
-                    <td> <input asp-for="StartDate" type="date"/> </td>
-                </tr>
-                <tr>
-                    <th> End Date: </th>
-                    <td> <input asp-for="EndDate" type="date"/> </td>
-                </tr>
-                <tr>
-                    <th> Details: </th>
-                    <td> <textarea asp-for="Details" type="text"></textarea> </td>
-                </tr>
-                <tr>
-                    <td class="text-center" colspan="2">
-                        <button class="btn btn-primary ml-1 mr-1" type="submit">
-                            Submit
-                        </button>
-                        <!-- 
-                        <a class="btn btn-primary ml-1 mr-1" type="submit" asp-controller="Goal" asp-action="Details">
-                            Submit
-                        </a>
-                        -->
-                        <a class="btn btn-secondary ml-1 mr-1" asp-controller="Goal" asp-action="Index">
-                            Cancel
-                        </a>
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </fieldset>
+    <h2> @ViewData["Title"] </h2>
+    <div asp-validation-summary="All"></div>
+    <form asp-controller="Goal" asp-action="Add" method="post">
+        <table class="centered table-bordered table-striped table-sm">
+            <tr>
+                <th> Goal Name: </th>
+                <td> <input asp-for="GoalName" /> </td>
+            </tr>
+            <tr>
+                <th> Priority: </th>
+                <td>
+                    <select asp-for="Priority">
+                        <option value=""> - Select - </option>
+                        <option value="Highest">Highest</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th> Status: </th>
+                <td>
+                    <select asp-for="Status">
+                        <option value=""> - Select - </option>
+                        <option value="Finished">Finished</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Problem">Problem</option>
+                        <option value="Waiting">Waiting</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th> Type: </th>
+                <td>
+                    <select asp-for="Type">
+                        <option value=""> - Select - </option>
+                        <option value="Education">Education</option>
+                        <option value="Health">Health</option>
+                        <option value="Location">Location</option>
+                        <option value="Income">Income</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Professional">Professional</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th> Start Date: </th>
+                <td> <input asp-for="StartDate" type="date"/> </td>
+            </tr>
+            <tr>
+                <th> End Date: </th>
+                <td> <input asp-for="EndDate" type="date"/> </td>
+            </tr>
+            <tr>
+                <th> Details: </th>
+                <td> <textarea asp-for="Details" type="text"></textarea> </td>
+            </tr>
+            <tr>
+                <td class="text-center" colspan="2">
+                    <button class="btn btn-primary ml-1 mr-1" type="submit">
+                        Submit
+                    </button>
+                    <!-- 
+                    <a class="btn btn-primary ml-1 mr-1" type="submit" asp-controller="Goal" asp-action="Details">
+                        Submit
+                    </a>
+                    -->
+                    <a class="btn btn-secondary ml-1 mr-1" asp-controller="Goal" asp-action="Index">
+                        Cancel
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </form>
 </body>

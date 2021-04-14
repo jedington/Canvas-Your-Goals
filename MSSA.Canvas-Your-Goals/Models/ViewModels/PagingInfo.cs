@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MSSA.Canvas_Your_Goals.Models.ViewModels
+namespace MSSA.Canvas_Your_Goals.Models
 {
     public class PagingInfo
     {

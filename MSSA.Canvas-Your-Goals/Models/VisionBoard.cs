@@ -1,16 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MSSA.Canvas_Your_Goals.Models
 {
     [Table("VisionBoard")]
     public class VisionBoard
     {
-        // [HiddenInput(DisplayValue = false)]
+        [HiddenInput(DisplayValue = false)]
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? VisionBoardId { get; set; }
 
-        // [HiddenInput(DisplayValue = false)]
+        [HiddenInput(DisplayValue = false)]
         [ForeignKey(nameof(User.UserId))]
         public string UserId { get; set; }
 

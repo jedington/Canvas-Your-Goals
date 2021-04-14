@@ -1,4 +1,4 @@
-﻿@model MSSA.Canvas_Your_Goals.Models.User
+﻿@model User
 
 @{
     ViewData["Title"] = "Register";
@@ -11,16 +11,6 @@
     <div asp-validation-summary="All"></div>
     <form asp-controller="User" asp-action="Register" method="post">
         <table class="centered table-sm bg-transparent">
-            <!--
-            <tr>
-                <th asp-for="Username">
-                    Username:
-                </th>
-                <td>
-                    <input asp-for="Username" type="text" class="form-control" placeholder="Input a Unique Username" />
-                </td>
-            </tr>
-            -->
             <tr>
                 <th asp-for="Email">
                     Email:
@@ -37,6 +27,7 @@
                     <input asp-for="Password" type="password" class="form-control" placeholder="Input Password" />
                 </td>
             </tr>
+            @*
             <tr>
                 <th asp-for="ConfirmPassword">
                     Confirm Password:
@@ -45,6 +36,7 @@
                     <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm..." />
                 </td>
             </tr>
+            *@
             <tr>
                 <th asp-for="SecurityHint">
                     Security Hint:
