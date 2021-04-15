@@ -5,9 +5,8 @@
 }
 
 <body>
-    <h3 class="bg-primary text-white m-2 p-2">
-        @ViewData["Title"]
-    </h3>
+    <header> <partial name="LoggedOutNav" /> </header>
+    <h3 class="bg-primary text-white m-2 p-2"> @ViewData["Title"] </h3>
     <div asp-validation-summary="All"></div>
     <form asp-controller="User" asp-action="Register" method="post">
         <table class="centered table-sm bg-transparent">

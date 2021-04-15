@@ -3,9 +3,10 @@
 @{
     ViewData["Title"] = "Goal List";
 }
+
 <body>
-    <h2> @ViewData["Title"] </h2>
-    <hr />
+    <header> <partial name="LoggedInNav" /> </header>
+    <h3 class="bg-primary text-white m-2 p-2"> @ViewData["Title"] </h3>
     
     <table class="centered table-bordered table-striped table-sm">
         <tr>
@@ -16,6 +17,7 @@
             <th>Start Date</th>
             <th>End Date</th>
         </tr>
+        
     @foreach (Goal item in Model.Goals)
     {
         <tr>
@@ -33,17 +35,18 @@
     }
         <tr>
             <td colspan="6">
-                <a asp-controller="Goal" asp-action="Add"> Add a new Goal! </a>
+                <a asp-controller="Goal" asp-action="Add">Add New Goal!</a>
+                <span 
+                    page-model="@Model.PagingInfo"
+                    page-action="Index"
+                    page-class-enabled="true"
+                    page-class="btn"
+                    page-class-normal="btn-outline-dark"
+                    page-class-selected="btn-primary"
+                    class="btn-group m-1 float-right">
+                </span>
             </td>
         </tr>
     </table>
-    <span 
-        page-model="@Model.PagingInfo"
-        page-action="Index"
-        page-class-enabled="true"
-        page-class="btn"
-        page-class-normal="btn-outline-dark"
-        page-class-selected="btn-primary"
-        class="btn-group m-1">
-    </span>
+
 </body>

@@ -5,7 +5,8 @@
 }
 
 <body>
-    <h2> @ViewData["Title"] </h2>
+    <header> <partial name="LoggedInNav" /> </header>
+    <h3 class="bg-primary text-white m-2 p-2"> @ViewData["Title"] </h3>
     <div asp-validation-summary="All"></div>
     <form asp-controller="Goal" asp-action="Add" method="post">
         <table class="centered table-bordered table-striped table-sm">

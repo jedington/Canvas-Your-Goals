@@ -196,6 +196,10 @@ p, em, b, td, th, ul, li {
     }
 }
 
+td, th {
+    padding: 2px 2px 2px 2px;
+}
+
 a {
     color: var(--color-link, #329fba);
 }
@@ -222,7 +226,7 @@ a:visited {
     --color-primary: #b3c4e3;
     --color-secondary: #b3daff;
     --color-link: #2682b4;
-    --color-link-hover: #236400;
+    --color-link-hover: #289090;
     --font-color: #222222;
 }
 
