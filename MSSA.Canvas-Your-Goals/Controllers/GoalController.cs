@@ -6,6 +6,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
 {
     public class GoalController : Controller
     {
+        // fields
         private int _pageSize = 10;
         private IGoalRepository _repository;
 
@@ -27,7 +28,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
             if (ModelState.IsValid)
             {
                 _repository.CreateGoal(addGoal);
-                return RedirectToAction("Details");
+                return RedirectToAction("Index");
             }
             return View(addGoal);
         } // Add method ends

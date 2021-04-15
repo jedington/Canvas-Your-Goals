@@ -24,25 +24,12 @@ namespace MSSA.Canvas_Your_Goals.Models
         }
         
         //// read
-        public IQueryable<User> GetAllUsers()
-            => _context.Users; // F-Magic
-        // GetAllUsers method ends
-
-        public IQueryable<string> GetAllCategories()
-            => _context.Users.Select(user => user.Email)
-                                .Distinct();
-
         public User GetUserById(int userId)
             //- User user = _context.Users
             //-     .Where(user => user.UserId == userId).FirstOrDefault();
             => _context.Users.Find(userId);
          // GetUserById method ends
 
-        public IQueryable<User> GetUsersByKeyword(string keyword)
-            //- IQueryable<User> users = _context.Users
-            //-     .Where(user => user.Name.Contains(keyword));
-            => _context.Users.Where(user => user.Email.Contains(keyword));
-        // GetUsersByKeyword method ends
 
         //// update
         public User UpdateUser(User user)

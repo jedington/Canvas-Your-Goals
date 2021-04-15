@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 using MSSA.Canvas_Your_Goals.Models;
 
 namespace MSSA.Canvas_Your_Goals.Controllers
@@ -16,7 +17,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         
 
         // methods
-        // create
+        // Create
         [HttpGet]
         public IActionResult Register()
             => View();
@@ -25,13 +26,18 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         {
             if (ModelState.IsValid)
             {
+                _repository.CreateUser(userReg);
                 return RedirectToAction("Index");
             }
             return View(userReg);
         } // Register method ends
 
 
-        // read
+        // Read
+        public IActionResult Index()
+            => View();
+        // Index method ends
+
         [HttpGet]
         public IActionResult Login()
             => View();
@@ -53,7 +59,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         {
             if (ModelState.IsValid)
             {
-                return View("ResetPassword");
+                return RedirectToAction("ResetPassword");
             }
             return View(userReq);
         } // ForgotPassword method ends
@@ -64,13 +70,15 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         public IActionResult ResetPassword()
             => View();
         [HttpPost]
-        public IActionResult ResetPassword(User userPwd)
+        public IActionResult ResetPassword(User userFetch)
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                _repository.UpdateUser(userFetch);
+                return RedirectToAction("Index",
+                    new { user = userFetch.Password } );
             }
-            return View(userPwd);
+            return View(userFetch);
         } // ResetPassword method ends
 
 

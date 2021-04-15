@@ -36,7 +36,6 @@ namespace MSSA.Canvas_Your_Goals.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Email = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
-                    ConfirmPassword = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SecurityHint = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
                     SecurityAnswer = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true)
                 },

@@ -9,13 +9,7 @@ namespace MSSA.Canvas_Your_Goals.Models
 
 
         // read
-        public IQueryable<User> GetAllUsers();
-
-        public IQueryable<string> GetAllCategories();
-
         public User GetUserById(int productId);
-
-        public IQueryable<User> GetUsersByKeyword(string keyword);
 
 
         // update
