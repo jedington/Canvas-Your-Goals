@@ -1,32 +1,24 @@
-﻿@model Goal
+﻿@model MSSA.Canvas_Your_Goals.Models.Task
 
 @{
-    ViewData["Title"] = "Edit Goal";
+    ViewData["Title"] = "Edit Task";
 }
 
 <body>
     <header> <partial name="LoggedInNav" /> </header>
     <h3 class="bg-primary text-white m-2 p-2"> @ViewData["Title"] </h3>
     <div asp-validation-summary="All"></div>
-    <form asp-controller="Goal" asp-action="Edit" method="post">
+    <form asp-controller="Task" asp-action="Edit" asp-route-taskId="@Model.TaskId" method="post">
         <table class="centered table-bordered table-striped table-sm">
             <tr>
-                <th>Goal Name:</th>
+                <th>Task Name:</th>
                 <td>
-                    <input asp-for="GoalName" />
+                    <input asp-for="TaskName" />
                 </td>
             </tr>
             <tr>
-                <th>Priority:</th>
-                <td>
-                    <select asp-for="Priority">
-                        <option value=""> @Model.Priority </option>
-                        <option value="Highest">Highest</option>
-                        <option value="High">High</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Low">Low</option>
-                    </select>
-                </td>
+                <th> Task Order: </th>
+                <td> <input asp-for="TaskOrder" type="range" /> </td>
             </tr>
             <tr>
                 <th>Status:</th>
@@ -37,20 +29,6 @@
                         <option value="In Progress">In Progress</option>
                         <option value="Problem">Problem</option>
                         <option value="Waiting">Waiting</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <th>Type:</th>
-                <td>
-                    <select asp-for="Type">
-                        <option value=""> @Model.Type </option>
-                        <option value="Education">Education</option>
-                        <option value="Health">Health</option>
-                        <option value="Location">Location</option>
-                        <option value="Income">Income</option>
-                        <option value="Personal">Personal</option>
-                        <option value="Professional">Professional</option>
                     </select>
                 </td>
             </tr>
@@ -77,12 +55,7 @@
                     <button class="btn btn-primary ml-1 mr-1" type="submit" value="Edit">
                         Submit
                     </button>
-                    <!--
-                    <a class="btn btn-primary ml-1 mr-1" type="submit" asp-controller="Goal" asp-action="Details">
-                        Save
-                    </a>
-                    -->
-                    <a class="btn btn-secondary ml-1 mr-1" asp-controller="Goal" asp-action="Details" asp-route-goalId="@Model.GoalId">
+                    <a class="btn btn-secondary ml-1 mr-1"  asp-controller="Task" asp-action="Details" asp-route-taskId="@Model.TaskId">
                         Cancel
                     </a>
                 </td>

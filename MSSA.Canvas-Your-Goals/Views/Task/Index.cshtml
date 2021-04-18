@@ -1,7 +1,8 @@
-﻿@model GoalListViewModel
+﻿@using Task = MSSA.Canvas_Your_Goals.Models.Task
+@model TaskListViewModel
 
 @{
-    ViewData["Title"] = "Goal List";
+    ViewData["Title"] = "Task List";
 }
 
 <header> <partial name="LoggedInNav" /> </header>
@@ -9,34 +10,32 @@
 
 <table class="centered table-bordered table-striped table-sm">
     <tr>
-        <th>Goal</th>
-        <th>Priority</th>
+        <th>Task</th>
+        <th>Order</th>
         <th>Status</th>
-        <th>Type</th>
         <th>Start Date</th>
         <th>End Date</th>
-        <th>Manage Tasks</th>
+        <th>Manage Steps</th>
     </tr>
     
-@foreach (Goal item in Model.Goals)
+@foreach (Task item in Model.Tasks)
 {
     <tr>
         <td>
-            <a asp-controller="Goal" asp-action="Details" asp-route-goalId="@item.GoalId">
-                @item.GoalName
+            <a asp-controller="Task" asp-action="Details" asp-route-taskId="@item.TaskId">
+                @item.TaskName
             </a>
         </td>
-        <td> @item.Priority </td>
+        <td> @item.TaskOrder </td>
         <td> @item.Status </td>
-        <td> @item.Type </td>
-        <td> @item.StartDate?.ToString("MM/dd/yyyy") </td>
-        <td> @item.EndDate?.ToString("MM/dd/yyyy") </td>
-        <td> <a asp-controller="Task" asp-action="Index" asp-route-goalId="@item.GoalId"> This Goal's Tasks </a> </td>
+        <td> @item.StartDate </td>
+        <td> @item.EndDate </td>
+        <td> <a asp-controller="Step" asp-action="Index" asp-route-taskId="@item.TaskId"> This Task's Steps </a> </td>
     </tr>
 }
     <tr>
-        <td colspan="7">
-            <a asp-controller="Goal" asp-action="Add">Add New Goal!</a>
+        <td colspan="6">
+            <a asp-controller="Task" asp-action="Add">Add New Task! </a>
             <span 
                 page-model="@Model.PagingInfo"
                 page-action="Index"

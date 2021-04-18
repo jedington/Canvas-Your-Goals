@@ -30,6 +30,7 @@ namespace MSSA.Canvas_Your_Goals
                     (Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IUserRepository, EfUserRepository>();
             services.AddScoped<IGoalRepository, EfGoalRepository>();
+            services.AddScoped<ITaskRepository, EfTaskRepository>();
             services.AddScoped<IVisionBoardRepository, EfVisionBoardRepository>();
             services.AddControllersWithViews();
         } // ConfigureService method ends

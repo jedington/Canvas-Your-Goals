@@ -38,7 +38,7 @@ namespace MSSA.Canvas_Your_Goals.Infrastructure
                 //- {
                 TagBuilder tag = new TagBuilder("a");
                 tag.Attributes["href"] = urlHelper.Action(PageAction, 
-                    new { productPage = i });
+                    new { Page = i });
                 if (PageClassEnabled == true)
                 {
                     tag.AddCssClass(PageClass);

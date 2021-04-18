@@ -7,6 +7,7 @@ namespace MSSA.Canvas_Your_Goals.Models
         // fields
         public DbSet<User> Users { get; set; }
         public DbSet<Goal> Goals { get; set; }
+        public DbSet<Task> Tasks { get; set; }
         public DbSet<VisionBoard> VisionBoards { get; set; }
         
 

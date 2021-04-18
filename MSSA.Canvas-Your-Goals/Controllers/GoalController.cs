@@ -67,7 +67,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         } // Details method ends
 
 
-        //// update
+        //// Update
         [HttpGet]
         public IActionResult Edit(int goalId)
         {
@@ -91,7 +91,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         } // Edit method ends
 
 
-        //// delete
+        //// Delete
         [HttpGet]
         public IActionResult Delete(int goalId)
         {
