@@ -114,6 +114,5 @@ namespace MSSA.Canvas_Your_Goals.Controllers
             return RedirectToAction("Index");
         } // Delete HttpPost method ends
 
-
-    }
+    } // class ends
 } // namespace ends

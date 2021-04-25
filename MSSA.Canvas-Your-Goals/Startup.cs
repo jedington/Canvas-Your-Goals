@@ -27,7 +27,7 @@ namespace MSSA.Canvas_Your_Goals
         {
             services.AddDbContext<AppDbContext>
                 (options => options.UseSqlServer
-                    (Configuration.GetConnectionString("DefaultConnection")));
+                    (Configuration.GetConnectionString("AzureDatabase")));
             services.AddScoped<IUserRepository, EfUserRepository>();
             services.AddScoped<IGoalRepository, EfGoalRepository>();
             services.AddScoped<ITaskRepository, EfTaskRepository>();

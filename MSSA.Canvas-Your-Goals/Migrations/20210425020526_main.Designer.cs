@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MSSA.Canvas_Your_Goals.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210415171418_TaskAdd")]
-    partial class TaskAdd
+    [Migration("20210425020526_main")]
+    partial class main
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -70,18 +70,33 @@ namespace MSSA.Canvas_Your_Goals.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Details")
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("GoalId")
                         .HasColumnType("int");
 
-                    b.Property<int>("OrderOf")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TaskName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<int>("TaskOrder")
+                        .HasColumnType("int");
 
                     b.HasKey("TaskId");
 
-                    b.ToTable("Tasks");
+                    b.ToTable("Task");
                 });
 
             modelBuilder.Entity("MSSA.Canvas_Your_Goals.Models.User", b =>
