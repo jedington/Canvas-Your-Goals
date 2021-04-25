@@ -168,7 +168,7 @@ Project is just barely starting. Listing out both things that are 'to-do' as wel
 8. OAuth potentially for easier login / SSO. ☐ (optional)
 9. Eventually use/migrate to WordPress? ☐ (optional)
 
-*See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).*
+*See the [open issues](https://github.com/jedington/Canvas-Your-Goals/issues) for a list of proposed features (and known issues).*
 
 
 
