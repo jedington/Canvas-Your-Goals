@@ -13,7 +13,7 @@ namespace MSSA.Canvas_Your_Goals.Models
 
         public IQueryable<string> GetAllCategories();
 
-        public Goal GetGoalById(int productId);
+        public Goal GetGoalById(int goalId);
 
         public IQueryable<Goal> GetGoalsByKeyword(string keyword);
 
@@ -23,7 +23,7 @@ namespace MSSA.Canvas_Your_Goals.Models
 
 
         // delete
-        public bool DeleteGoal(int id);
+        public bool DeleteGoal(int goalId);
 
 
     } // class ends

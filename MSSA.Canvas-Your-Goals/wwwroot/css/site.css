@@ -223,11 +223,11 @@ a:visited {
 }
 
 .theme-calm {
-    --color-primary: #b3c4e3;
-    --color-secondary: #b3daff;
-    --color-link: #2682b4;
-    --color-link-hover: #289090;
-    --font-color: #222222;
+    --color-primary: #eaeaea;
+    --color-secondary: #a3c4e3;
+    --color-link: #0060df;
+    --color-link-hover: #111111;
+    --font-color: #111111;
 }
 
 .theme-dark {

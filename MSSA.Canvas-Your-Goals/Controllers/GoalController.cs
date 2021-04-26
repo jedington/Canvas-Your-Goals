@@ -23,14 +23,14 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         public IActionResult Add()
             => View();
         [HttpPost]
-        public IActionResult Add(Goal addGoal)
+        public IActionResult Add(Goal goal)
         {
             if (ModelState.IsValid)
             {
-                _repository.CreateGoal(addGoal);
-                return RedirectToAction("Index");
+                _repository.CreateGoal(goal);
+                return RedirectToAction("Details", new {goalId = goal.GoalId});
             }
-            return View(addGoal);
+            return View(goal);
         } // Add method ends
 
 
@@ -79,15 +79,14 @@ namespace MSSA.Canvas_Your_Goals.Controllers
             return RedirectToAction("Index");
         }
         [HttpPost]
-        public IActionResult Edit(Goal editGoal)
+        public IActionResult Edit(Goal goal)
         {
             if (ModelState.IsValid)
             {
-                _repository.UpdateGoal(editGoal);
-                return RedirectToAction("Index", 
-                    new { goalId = editGoal.GoalId } );
+                _repository.UpdateGoal(goal);
+                return RedirectToAction("Details", new {goalId = goal.GoalId});
             }
-            return View(editGoal);
+            return View(goal);
         } // Edit method ends
 
 
@@ -103,9 +102,9 @@ namespace MSSA.Canvas_Your_Goals.Controllers
             return RedirectToAction("Index");
         } // Delete HttpGet method ends
         [HttpPost]
-        public IActionResult DeleteAction(int goalId)
+        public IActionResult DeleteAction(Goal goal)
         {
-            _repository.DeleteGoal(goalId);
+            _repository.DeleteGoal(goal.GoalId);
             return RedirectToAction("Index");
         } // Delete HttpPost method ends
     } // class ends

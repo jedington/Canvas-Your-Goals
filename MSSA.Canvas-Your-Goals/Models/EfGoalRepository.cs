@@ -64,10 +64,10 @@ namespace MSSA.Canvas_Your_Goals.Models
 
 
         //// delete
-        public bool DeleteGoal(int id)
+        public bool DeleteGoal(int goalId)
         {
-            // Goal goalToDelete = _context.Goals.Find(id);
-            Goal goalToDelete = GetGoalById(id);
+            // Goal goalToDelete = _context.Goals.Find(goalId);
+            Goal goalToDelete = GetGoalById(goalId);
             if (goalToDelete == null)
             {
                 return false;

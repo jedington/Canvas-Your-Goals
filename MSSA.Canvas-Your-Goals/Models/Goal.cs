@@ -10,15 +10,15 @@ namespace MSSA.Canvas_Your_Goals.Models
     {
         [HiddenInput(DisplayValue = false)]
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int? GoalId { get; set; }
+        public int GoalId { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         [ForeignKey(nameof(User.UserId))]
-        public int? UserId { get; set; }
+        public int? UserId { get; set; } // ? temp -- One-to-Many rel for User-to-Goals
 
         [HiddenInput(DisplayValue = false)]
         [ForeignKey(nameof(VisionBoard.VisionBoardId))]
-        public int? VisionBoardId { get; set; }
+        public int? VisionBoardId { get; set; } // ? temp -- One-to-Many rel for VB-to-Goals
 
         [MaxLength(30, ErrorMessage = "Goal Name is Limited to 30 total characters")]
         [Required(ErrorMessage = "A Name is Required")]
