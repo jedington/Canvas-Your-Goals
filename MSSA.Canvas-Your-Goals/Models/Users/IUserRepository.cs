@@ -9,7 +9,7 @@ namespace MSSA.Canvas_Your_Goals.Models
 
 
         // read
-        public User GetUserById(int productId);
+        public User GetUserById(int userId);
 
 
         // update
@@ -17,8 +17,6 @@ namespace MSSA.Canvas_Your_Goals.Models
 
 
         // delete
-        public bool DeleteUser(int id);
-
-
+        public bool DeleteUser(int userId);
     } // class ends
 } // namespace ends

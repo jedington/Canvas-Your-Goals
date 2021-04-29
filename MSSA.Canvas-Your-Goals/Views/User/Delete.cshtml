@@ -1,0 +1,31 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Delete Account?!";
+}
+
+<header> <partial name="LoggedInNav" /> </header>
+<h3 class="bg-primary text-white m-2 p-2"> @ViewData["Title"] </h3>
+<table class="centered table-bordered table-striped table-sm">
+    <tr>
+        <th> Goal Name: </th>
+        <td> @Model.Email </td>
+    </tr>
+    <tr>
+        <td class="text-center text-warning" colspan="2">
+            <h2> Are You Sure?!?! </h2>
+        </td>
+    </tr>
+    <tr>
+        <td class="text-center" colspan="2">
+            <form method="post">
+                <button class="btn btn-danger ml-1 mr-1" asp-controller="Goal" asp-action="DeleteAction" asp-route-goalId="@Model.UserId">
+                    Delete?!
+                </button>
+                <button class="btn btn-secondary ml-1 mr-1" asp-controller="User" asp-action="Index" asp-route-userId="@Model.UserId" formmethod="get">
+                    Cancel
+                </button>
+            </form>
+        </td>
+    </tr>
+</table>

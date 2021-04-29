@@ -23,21 +23,21 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         public IActionResult Add()
             => View();
         [HttpPost]
-        public IActionResult Add(Goal goal)
+        public IActionResult Add(int userId, Goal goal)
         {
             if (ModelState.IsValid)
             {
-                _repository.CreateGoal(goal);
+                _repository.CreateGoal(userId, goal);
                 return RedirectToAction("Details", new {goalId = goal.GoalId});
             }
             return View(goal);
-        } // Add method ends
+        } // Register method ends
 
 
         //// Read
-        public IActionResult Index(int goalPage = 1)
+        public IActionResult Index(int userId, int goalPage = 1)
         {
-            IQueryable<Goal> allGoals = _repository.GetAllGoals();
+            IQueryable<Goal> allGoals = _repository.GetAllGoals(userId);
             IQueryable<Goal> someGoals = allGoals
                 .OrderBy(goal => goal.GoalId)
                 .Skip((goalPage - 1) * _pageSize)
@@ -53,7 +53,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
                 PagingInfo = pInfo,
                 Goals = someGoals
             };
-            return View(gLvM);
+            return View(allGoals);
         } // Index method ends
         
         public IActionResult Details(int goalId)

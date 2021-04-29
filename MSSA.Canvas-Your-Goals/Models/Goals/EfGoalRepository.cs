@@ -16,16 +16,22 @@ namespace MSSA.Canvas_Your_Goals.Models
 
         // methods
         //// create
-        public Goal CreateGoal(Goal goal)
+        public Goal CreateGoal(int userId, Goal goal)
         {
+            goal.UserId = userId; 
             _context.Goals.Add(goal);
             _context.SaveChanges();
             return goal;
         } // CreateGoal method ends
-        
+
+
         //// read
         public IQueryable<Goal> GetAllGoals()
             => _context.Goals; // F-Magic
+        // GetAllGoals method ends
+
+        public IQueryable<Goal> GetAllGoals(int userId)
+            => _context.Goals.Where(g => g.UserId == userId);
         // GetAllGoals method ends
 
         public IQueryable<string> GetAllCategories()

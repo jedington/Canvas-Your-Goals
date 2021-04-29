@@ -4,46 +4,44 @@
     ViewData["Title"] = "Delete Task";
 }
 
-<body>
-    <header> <partial name="LoggedInNav" /> </header>
-    <h3 class="bg-primary text-white m-2 p-2"> @ViewData["Title"] </h3>
-    <table class="centered table-bordered table-striped table-sm">
-        <tr>
-            <th> Goal Name: </th>
-            <td> @Model.TaskName </td>
-        </tr>
-        <tr>
-            <th> Priority: </th>
-            <td> @Model.TaskOrder </td>
-        </tr>
-        <tr>
-            <th> Status: </th>
-            <td> @Model.Status </td>
-        </tr>
-        <tr>
-            <th> Type: </th>
-            <td> @Model.StartDate?.ToString("MM/dd/yyyy") </td>
-        </tr>
-        <tr>
-            <th> Start Date: </th>
-            <td> @Model.EndDate?.ToString("MM/dd/yyyy") </td>
-        </tr>
-        <tr>
-            <td class="text-center" colspan="2">
-                <h2> Are You Sure? </h2>
-            </td>
-        </tr>
-        <tr>
-            <td class="text-center" colspan="2">
-                <form method="post">
-                    <button asp-controller="Task" asp-action="DeleteAction" asp-route-taskId="@Model.TaskId">
-                        Delete
-                    </button>
-                    <button asp-controller="Task" asp-action="Index" asp-route-goalId="@Model.GoalId" formmethod="get">
-                        Cancel
-                    </button>
-                </form>
-            </td>
-        </tr>
-    </table>
-</body>
+<header> <partial name="LoggedInNav" /> </header>
+<h3 class="bg-primary text-white m-2 p-2"> @ViewData["Title"] </h3>
+<table class="centered table-bordered table-striped table-sm">
+    <tr>
+        <th> Goal Name: </th>
+        <td> @Model.TaskName </td>
+    </tr>
+    <tr>
+        <th> Priority: </th>
+        <td> @Model.TaskOrder </td>
+    </tr>
+    <tr>
+        <th> Status: </th>
+        <td> @Model.Status </td>
+    </tr>
+    <tr>
+        <th> Type: </th>
+        <td> @Model.StartDate?.ToString("MM/dd/yyyy") </td>
+    </tr>
+    <tr>
+        <th> Start Date: </th>
+        <td> @Model.EndDate?.ToString("MM/dd/yyyy") </td>
+    </tr>
+    <tr>
+        <td class="text-center text-warning" colspan="2">
+            <h2> Are You Sure? </h2>
+        </td>
+    </tr>
+    <tr>
+        <td class="text-center" colspan="2">
+            <form method="post">
+                <button class="btn btn-danger ml-1 mr-1" asp-controller="Task" asp-action="DeleteAction" asp-route-taskId="@Model.TaskId">
+                    Delete
+                </button>
+                <button class="btn btn-secondary ml-1 mr-1" asp-controller="Task" asp-action="Index" asp-route-goalId="@Model.GoalId" formmethod="get">
+                    Cancel
+                </button>
+            </form>
+        </td>
+    </tr>
+</table>

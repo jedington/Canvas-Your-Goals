@@ -1,13 +1,14 @@
 ﻿@model User
 
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = $"Edit Information // {@Model.Email}";
 }
 
-<header> <partial name="LoggedOutNav" /> </header>
+<header> <partial name="LoggedInNav" /> </header>
 <h3 class="bg-primary text-white m-2 p-2"> @ViewData["Title"] </h3>
 <div asp-validation-summary="All"></div>
-<form asp-controller="User" asp-action="Register" method="post">
+<form asp-controller="User" asp-action="Edit" method="post">
+    <input asp-for="UserId" type="hidden" />
     <table class="centered table-sm bg-transparent">
         <tr>
             <th asp-for="Email">
@@ -53,7 +54,10 @@
         </tr>
         <tr>
             <td class="text-center" colspan="2">
-                <input class="btn btn-primary ml-1 mr-1" type="submit" value="Register!" />
+                <input class="btn btn-primary ml-1 mr-1" type="submit" value="Submit!" />
+                <a class="btn btn-secondary ml-1 mr-1" asp-controller="User" asp-action="Index" asp-route-userId="@Model.UserId">
+                    Cancel
+                </a>
             </td>
         </tr>
     </table>

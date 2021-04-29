@@ -1,5 +1,5 @@
 ﻿@using Task = MSSA.Canvas_Your_Goals.Models.Task
-@model TaskListViewModel
+@model IQueryable<MSSA.Canvas_Your_Goals.Models.Task>
 
 @{
     ViewData["Title"] = "Task List";
@@ -18,7 +18,7 @@
         <th>Manage Steps</th>
     </tr>
     
-@foreach (Task item in Model.Tasks)
+@foreach (Task item in Model)
 {
     <tr>
         <td>
@@ -35,8 +35,9 @@
 }
     <tr>
         <td colspan="6">
-            <a asp-controller="Task" asp-action="Add">Add New Task! </a>
-            <span 
+            <a asp-controller="Task" asp-action="Add">Register New Task! </a>
+            @*
+            <span
                 page-model="@Model.PagingInfo"
                 page-action="Index"
                 page-class-enabled="true"
@@ -45,6 +46,7 @@
                 page-class-selected="btn-primary"
                 class="btn-group m-1 float-right">
             </span>
+            *@
         </td>
     </tr>
 </table>

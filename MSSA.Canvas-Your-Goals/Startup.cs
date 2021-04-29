@@ -25,14 +25,26 @@ namespace MSSA.Canvas_Your_Goals
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>
-                (options => options.UseSqlServer
-                    (Configuration.GetConnectionString("AzureDatabase")));
+            services.AddDbContext<AppDbContext>(options => options
+                .UseSqlServer(System.Environment
+                .GetEnvironmentVariable("VisionBoardConnectionString")));
+            //- services.AddDbContext<AppDbContext>(options => options
+            //-     .UseSqlServer(Configuration
+            //-     .GetConnectionString("DefaultConnection")));
             services.AddScoped<IUserRepository, EfUserRepository>();
             services.AddScoped<IGoalRepository, EfGoalRepository>();
             services.AddScoped<ITaskRepository, EfTaskRepository>();
             services.AddScoped<IVisionBoardRepository, EfVisionBoardRepository>();
             services.AddControllersWithViews();
+            services.AddRazorPages();
+            //- services.AddMemoryCache();
+            services.AddDistributedMemoryCache();
+            services.AddSession(
+                //- options =>
+                //- {
+                //-    options.IdleTimeout = TimeSpan.FromSeconds(10);
+                //- }
+            );
         } // ConfigureService method ends
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,20 +64,16 @@ namespace MSSA.Canvas_Your_Goals
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseSession();
             app.UseAuthorization();
-            //- app.UseEndpoints(endpoints =>
-            //- {
-            //-     endpoints.MapControllerRoute(
-            //-         name: "pagination",
-            //-         pattern: "Products/Page{productPage}",
-            //-         defaults: new { Controller = "Home", action = "Index" });
-            //-     endpoints.MapDefaultControllerRoute();
-            //- });
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                //- endpoints.MapControllerRoute(
+                //-     name: "default",
+                //-     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
             });
         } // Configure method ends
     } // class ends

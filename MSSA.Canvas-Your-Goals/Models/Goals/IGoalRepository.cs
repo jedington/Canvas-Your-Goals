@@ -5,11 +5,13 @@ namespace MSSA.Canvas_Your_Goals.Models
     public interface IGoalRepository
     {
         // create
-        public Goal CreateGoal(Goal p);
+        public Goal CreateGoal(int userId, Goal goal);
 
 
         // read
         public IQueryable<Goal> GetAllGoals();
+
+        public IQueryable<Goal> GetAllGoals(int userId);
 
         public IQueryable<string> GetAllCategories();
 

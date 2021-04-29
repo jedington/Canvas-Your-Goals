@@ -9,7 +9,7 @@ namespace MSSA.Canvas_Your_Goals.Models
     {
         [HiddenInput(DisplayValue = false)]
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int? UserId { get; set; } // UserId property ends (102)
+        public int UserId { get; set; } // UserId property ends (102)
         
         [MaxLength(40, ErrorMessage = "Email is limited to 40 total characters")]
         [EmailAddress, Required(ErrorMessage = "An Email is Required")]

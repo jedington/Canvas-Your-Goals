@@ -31,7 +31,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
                 return RedirectToAction("Details", new {taskId = task.TaskId});
             }
             return View(task);
-        } // Add method ends
+        } // Register method ends
 
 
         //// Read
@@ -58,7 +58,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
                 PagingInfo = pInfo,
                 Tasks = someTasks
             };
-            return View(tLvM);
+            return View(allTasks);
         } // Index method ends
         
         public IActionResult Details(int taskId)

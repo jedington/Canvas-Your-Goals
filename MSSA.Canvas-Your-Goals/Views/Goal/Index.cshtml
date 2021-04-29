@@ -1,4 +1,4 @@
-﻿@model GoalListViewModel
+﻿@model IQueryable<Goal>
 
 @{
     ViewData["Title"] = "Goal List";
@@ -18,7 +18,7 @@
         <th>Manage Tasks</th>
     </tr>
     
-@foreach (Goal item in Model.Goals)
+@foreach (Goal item in Model)
 {
     <tr>
         <td>
@@ -36,8 +36,9 @@
 }
     <tr>
         <td colspan="7">
-            <a asp-controller="Goal" asp-action="Add">Add New Goal!</a>
-            <span 
+            <a asp-controller="Goal" asp-action="Add">Register New Goal!</a>
+            @*
+            <span
                 page-model="@Model.PagingInfo"
                 page-action="Index"
                 page-class-enabled="true"
@@ -46,6 +47,7 @@
                 page-class-selected="btn-primary"
                 class="btn-group m-1 float-right">
             </span>
+            *@
         </td>
     </tr>
 </table>

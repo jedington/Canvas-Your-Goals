@@ -1,12 +1,10 @@
 ﻿@model User
 
 @{
-    ViewData["Title"] = "Welcome, let's get to planning!";
+    ViewData["Title"] = $"Welcome {@Model.Email}, let's get to planning!";
 }
 
-<body>
-    <header> <partial name="LoggedInNav" /> </header>
-    <h3 class="bg-primary text-white m-2 p-2"> @ViewData["Title"] </h3>
+<header> <partial name="LoggedInNav" /> </header>
+<h3 class="bg-primary text-white m-2 p-2"> @ViewData["Title"] </h3>
 <img src="https://cdn.discordapp.com/attachments/363603833680560139/817572392310276157/goal-without-a-plan.jpeg" alt="">
-    <h2> Turn Your Goals Into Reality... Let's Help You Make a Plan! </h2>
-</body>
+<h2> Turn Your Goals Into Reality... Let's Help You Make a Plan! </h2>

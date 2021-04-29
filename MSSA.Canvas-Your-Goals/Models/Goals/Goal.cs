@@ -14,7 +14,7 @@ namespace MSSA.Canvas_Your_Goals.Models
 
         [HiddenInput(DisplayValue = false)]
         [ForeignKey(nameof(User.UserId))]
-        public int? UserId { get; set; } // ? temp -- One-to-Many rel for User-to-Goals
+        public int UserId { get; set; } // ? temp -- One-to-Many rel for User-to-Goals
 
         [HiddenInput(DisplayValue = false)]
         [ForeignKey(nameof(VisionBoard.VisionBoardId))]
