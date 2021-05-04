@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc;
@@ -14,11 +15,15 @@ namespace MSSA.Canvas_Your_Goals.Models
 
         [HiddenInput(DisplayValue = false)]
         [ForeignKey(nameof(User.UserId))]
-        public int UserId { get; set; } // ? temp -- One-to-Many rel for User-to-Goals
+        public int? UserId { get; set; } // ? temp -- One-to-Many rel for User-to-Goals
+
+        //- public User User { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         [ForeignKey(nameof(VisionBoard.VisionBoardId))]
         public int? VisionBoardId { get; set; } // ? temp -- One-to-Many rel for VB-to-Goals
+        
+        public IEnumerable<Task> Tasks { get; set; }
 
         [MaxLength(30, ErrorMessage = "Goal Name is Limited to 30 total characters")]
         [Required(ErrorMessage = "A Name is Required")]
@@ -30,11 +35,13 @@ namespace MSSA.Canvas_Your_Goals.Models
 
         public string Type { get; set; }
 
-        public DateTime? StartDate { get; set; }
+        [DataType(DataType.Date), Required(ErrorMessage = "A Start Date is Required")]
+        public DateTime StartDate { get; set; }
         
+        [DataType(DataType.Date)]
         public DateTime? EndDate { get; set; }
 
-        // [Display(Name = "Input what the goal is about")]
+        [DataType(DataType.MultilineText)]
         [MaxLength(2000, ErrorMessage = "Details is Limited to 2000 characters")]
         public string Details { get; set; }
     } // class ends

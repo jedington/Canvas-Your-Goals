@@ -12,16 +12,20 @@
         <td> @Model.Email </td>
     </tr>
     <tr>
-        <td class="text-center text-warning" colspan="2">
+        <td class="text-center btn-outline-warning" colspan="2">
             <h2> Are You Sure?!?! </h2>
         </td>
     </tr>
     <tr>
         <td class="text-center" colspan="2">
             <form method="post">
+                <input type="hidden" asp-for="UserId" />
+                <input type="submit" value="Delete!!!" class="btn btn-danger ml-1 mr-1" />
+                @*
                 <button class="btn btn-danger ml-1 mr-1" asp-controller="Goal" asp-action="DeleteAction" asp-route-goalId="@Model.UserId">
-                    Delete?!
+                    Delete!!!
                 </button>
+                *@
                 <button class="btn btn-secondary ml-1 mr-1" asp-controller="User" asp-action="Index" asp-route-userId="@Model.UserId" formmethod="get">
                     Cancel
                 </button>

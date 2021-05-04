@@ -20,7 +20,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         //// Create
         [HttpGet]
         public IActionResult Register() // Add!
-            => View();
+            => View(new User());
         [HttpPost]
         public IActionResult Register(User user) // Add!
         {
@@ -92,7 +92,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
                 return View(user);
             }
             return RedirectToAction("Login");
-        }
+        } // Edit HttpGet method ends
         [HttpPost]
         public IActionResult Edit(User user)
         {
@@ -102,7 +102,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
                 return RedirectToAction("Profile", new {userId = user.UserId});
             }
             return View(user);
-        } // ForgotPassword method ends
+        } // Edit HttpPost method ends
 
         [HttpGet]
         public IActionResult ResetPassword(int userId)
@@ -113,7 +113,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
                 return View(user);
             }
             return RedirectToAction("Login");
-        }
+        } // ResetPassword HttpGet method ends
         [HttpPost]
         public IActionResult ResetPassword(User user)
         {
@@ -123,7 +123,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
                 return RedirectToAction("Profile", new {userId = user.UserId});
             }
             return View(user);
-        } // ResetPassword method ends
+        } // ResetPassword HttpPost method ends
 
 
         //// delete
@@ -135,7 +135,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
             {
                 return View(user);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Login");
         } // Delete HttpGet method ends
         [HttpPost]
         public IActionResult DeleteAction(User user)

@@ -5,7 +5,7 @@ namespace MSSA.Canvas_Your_Goals.Models
     public interface ITaskRepository
     {
         // create
-        public Task CreateTask(int goalId, Task addTask);
+        public Task CreateTask(Task addTask);
 
         // read
         public IQueryable<Task> GetAllTasks();
@@ -20,7 +20,7 @@ namespace MSSA.Canvas_Your_Goals.Models
 
 
         // delete
-        public bool DeleteTask(int taskId);
+        public bool DeleteTask(Task task);
 
     }
 }

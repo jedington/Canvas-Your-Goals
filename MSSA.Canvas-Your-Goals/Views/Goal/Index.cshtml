@@ -5,49 +5,55 @@
 }
 
 <header> <partial name="LoggedInNav" /> </header>
-<h3 class="bg-primary text-white m-2 p-2"> @ViewData["Title"] </h3>
-
-<table class="centered table-bordered table-striped table-sm">
-    <tr>
-        <th>Goal</th>
-        <th>Priority</th>
-        <th>Status</th>
-        <th>Type</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-        <th>Manage Tasks</th>
-    </tr>
-    
-@foreach (Goal item in Model)
-{
-    <tr>
-        <td>
-            <a asp-controller="Goal" asp-action="Details" asp-route-goalId="@item.GoalId">
-                @item.GoalName
-            </a>
-        </td>
-        <td> @item.Priority </td>
-        <td> @item.Status </td>
-        <td> @item.Type </td>
-        <td> @item.StartDate?.ToString("MM/dd/yyyy") </td>
-        <td> @item.EndDate?.ToString("MM/dd/yyyy") </td>
-        <td> <a asp-controller="Task" asp-action="Index" asp-route-goalId="@item.GoalId"> This Goal's Tasks </a> </td>
-    </tr>
-}
-    <tr>
-        <td colspan="7">
-            <a asp-controller="Goal" asp-action="Add">Register New Goal!</a>
-            @*
-            <span
-                page-model="@Model.PagingInfo"
-                page-action="Index"
-                page-class-enabled="true"
-                page-class="btn"
-                page-class-normal="btn-outline-dark"
-                page-class-selected="btn-primary"
-                class="btn-group m-1 float-right">
-            </span>
-            *@
-        </td>
-    </tr>
-</table>
+<fieldset class="shadow centered">
+    <legend> @ViewData["Title"] </legend>
+    <table class="table-bordered table-striped table-sm">
+        <thead>
+            <tr>
+                <th class="pr-1 text-center"> Goal </th>
+                <th class="pr-1 text-center"> Priority </th>
+                <th class="pr-1 text-center"> Status </th>
+                <th class="pr-1 text-center"> Type </th>
+                <th class="pr-1 text-center"> Start Date </th>
+                <th class="pr-1 text-center"> End Date </th>
+                <th class="pr-1 text-center"> Details </th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (Goal goal in Model)
+        {
+            <tr>
+                <td> @goal.GoalName </td>
+                <td> @goal.Priority </td>
+                <td> @goal.Status </td>
+                <td> @goal.Type </td>
+                <td> @goal.StartDate.ToString("MM/dd/yyyy") </td>
+                <td> @goal.EndDate?.ToString("MM/dd/yyyy") </td>
+                <td>
+                    <a asp-controller="Goal" asp-action="Details" asp-route-goalId="@goal.GoalId" class="btn btn-sm btn-outline-info ml-1 mr-1">
+                        View
+                    </a>
+                </td>
+            </tr>
+        }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="7">
+                    <a asp-controller="Goal" asp-action="Add" class="btn btn-outline-info ml-1 mr-1">Create New Goal!</a>
+                    @*
+                    <span
+                        page-model="@Model.PagingInfo"
+                        page-action="Index"
+                        page-class-enabled="true"
+                        page-class="btn"
+                        page-class-normal="btn-outline-dark"
+                        page-class-selected="btn-primary"
+                        class="btn-group m-1 float-right">
+                    </span>
+                    *@
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</fieldset>

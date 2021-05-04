@@ -27,14 +27,14 @@ namespace MSSA.Canvas_Your_Goals.Models
         public User GetUserById(int userId)
             //- User user = _context.Users
             //-     .Where(user => user.UserId == userId).FirstOrDefault();
-            => _context.Users.Find(userId);
+            => _context.Users.FirstOrDefault(u => u.UserId == userId);
          // GetUserById method ends
 
 
         //// update
         public User UpdateUser(User user)
         {
-            User userToUpdate = _context.Users.Find(user.UserId);
+            User userToUpdate = GetUserById(user.UserId);
             if (userToUpdate != null)
             {
                 userToUpdate.Email = user.Email;
@@ -50,7 +50,7 @@ namespace MSSA.Canvas_Your_Goals.Models
         //// delete
         public bool DeleteUser(int userId)
         {
-            // Product userToDelete = _context.Users.Find(id);
+            // User userToDelete = _context.Users.Find(id);
             User userToDelete = GetUserById(userId);
             if (userToDelete == null)
             {

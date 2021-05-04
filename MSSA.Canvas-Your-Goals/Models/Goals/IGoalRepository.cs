@@ -5,7 +5,7 @@ namespace MSSA.Canvas_Your_Goals.Models
     public interface IGoalRepository
     {
         // create
-        public Goal CreateGoal(int userId, Goal goal);
+        public Goal CreateGoal(Goal goal);
 
 
         // read
@@ -25,7 +25,7 @@ namespace MSSA.Canvas_Your_Goals.Models
 
 
         // delete
-        public bool DeleteGoal(int goalId);
+        public bool DeleteGoal(Goal goal);
 
 
     } // class ends

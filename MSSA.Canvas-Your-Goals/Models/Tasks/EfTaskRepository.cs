@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace MSSA.Canvas_Your_Goals.Models
 {
@@ -16,11 +18,19 @@ namespace MSSA.Canvas_Your_Goals.Models
         
         // methods
         //// create
-        public Task CreateTask(int goalId, Task task)
+        public Task CreateTask(Task task)
         {
-            task.GoalId = goalId;
-            _context.Tasks.Add(task);
-            _context.SaveChanges();
+            try
+            {
+                _context.Tasks.Add(task);
+                _context.SaveChanges();
+            }
+            #pragma warning disable CS0168 // Variable is declared but never used
+            catch (Exception e)
+            #pragma warning restore CS0168 // Variable is declared but never used
+            {
+                return null;
+            }
             return task;
         } // CreateTask method ends
 
@@ -35,13 +45,15 @@ namespace MSSA.Canvas_Your_Goals.Models
         // GetAllTasks method ends
 
         public Task GetTaskById(int taskId)
-            => _context.Tasks.Find(taskId);
+            => _context.Tasks
+                .Include(t => t.Goal)
+                .FirstOrDefault(t => t.TaskId == taskId);
         // GetTaskById method ends
 
         //// update
         public Task UpdateTask(Task task)
         {
-            Task taskToUpdate = _context.Tasks.Find(task.TaskId);
+            Task taskToUpdate = GetTaskById(task.TaskId);
             if (taskToUpdate != null)
             {
                 taskToUpdate.TaskName = task.TaskName;
@@ -50,16 +62,25 @@ namespace MSSA.Canvas_Your_Goals.Models
                 taskToUpdate.StartDate = task.StartDate;
                 taskToUpdate.EndDate = task.EndDate;
                 taskToUpdate.Details = task.Details;
-                _context.SaveChanges();
+                try
+                {
+                    _context.SaveChanges();
+                }
+                #pragma warning disable CS0168 // Variable is declared but never used
+                catch (Exception e)
+                #pragma warning restore CS0168 // Variable is declared but never used
+                {
+                    return null;
+                }
             }
             return taskToUpdate;
         } // UpdateTask method ends
 
 
         //// delete
-        public bool DeleteTask(int taskId)
+        public bool DeleteTask(Task task)
         {
-            Task taskToDelete = GetTaskById(taskId);
+            Task taskToDelete = GetTaskById(task.TaskId);
             if (taskToDelete == null)
             {
                 return false;

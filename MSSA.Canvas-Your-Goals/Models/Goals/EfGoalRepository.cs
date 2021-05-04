@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace MSSA.Canvas_Your_Goals.Models
 {
@@ -16,11 +18,19 @@ namespace MSSA.Canvas_Your_Goals.Models
 
         // methods
         //// create
-        public Goal CreateGoal(int userId, Goal goal)
+        public Goal CreateGoal(Goal goal)
         {
-            goal.UserId = userId; 
-            _context.Goals.Add(goal);
-            _context.SaveChanges();
+            try
+            {
+                _context.Goals.Add(goal);
+                _context.SaveChanges();
+            }
+            #pragma warning disable CS0168 // Variable is declared but never used
+            catch (Exception e)
+            #pragma warning restore CS0168 // Variable is declared but never used
+            {
+                return null;
+            }
             return goal;
         } // CreateGoal method ends
 
@@ -35,26 +45,24 @@ namespace MSSA.Canvas_Your_Goals.Models
         // GetAllGoals method ends
 
         public IQueryable<string> GetAllCategories()
-            => _context.Goals.Select(p => p.Type)
-                                .Distinct();
+            => _context.Goals.Select(g => g.Type).Distinct();
         // GetAllCategories method ends
 
-        public Goal GetGoalById(int goalId)
-            //- Goal goal = _context.Goals
-            //-     .Where(goal => goal.GoalId == goalId).FirstOrDefault();
-            => _context.Goals.Find(goalId);
-         // GetGoalById method ends
+        public Goal GetGoalById(int goalId) 
+            => _context.Goals
+                //- .Include(g => g.User)
+                .Include(g => g.Tasks.OrderBy(t => t.TaskOrder))
+                .FirstOrDefault(g => g.GoalId == goalId);
+        // GetGoalById method ends
 
         public IQueryable<Goal> GetGoalsByKeyword(string keyword)
-            //- IQueryable<Goal> goals = _context.Goals
-            //-     .Where(goal => goal.Name.Contains(keyword));
             => _context.Goals.Where(goal => goal.GoalName.Contains(keyword));
         // GetGoalsByKeyword method ends
 
         //// update
         public Goal UpdateGoal(Goal goal)
         {
-            Goal goalToUpdate = _context.Goals.Find(goal.GoalId);
+            Goal goalToUpdate = GetGoalById(goal.GoalId);
             if (goalToUpdate != null)
             {
                 goalToUpdate.GoalName = goal.GoalName;
@@ -63,17 +71,26 @@ namespace MSSA.Canvas_Your_Goals.Models
                 goalToUpdate.Type = goal.Type;
                 goalToUpdate.StartDate = goal.StartDate;
                 goalToUpdate.EndDate = goal.EndDate;
-                _context.SaveChanges();
+                try
+                {
+                    _context.SaveChanges();
+                }
+                #pragma warning disable CS0168 // Variable is declared but never used
+                catch (Exception e)
+                #pragma warning restore CS0168 // Variable is declared but never used
+                {
+                    return null;
+                }
             }
             return goalToUpdate;
         } // UpdateGoal method ends
 
 
         //// delete
-        public bool DeleteGoal(int goalId)
+        public bool DeleteGoal(Goal goal)
         {
             // Goal goalToDelete = _context.Goals.Find(goalId);
-            Goal goalToDelete = GetGoalById(goalId);
+            Goal goalToDelete = GetGoalById(goal.GoalId);
             if (goalToDelete == null)
             {
                 return false;

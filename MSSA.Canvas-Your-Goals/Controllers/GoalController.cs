@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using MSSA.Canvas_Your_Goals.Models;
 
@@ -20,39 +21,43 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         // methods
         //// Create
         [HttpGet]
-        public IActionResult Add()
-            => View();
+        public IActionResult Add(int userId)
+            => View(new Goal
+            {
+                UserId = userId, 
+                StartDate = DateTime.Now.Date
+            });
         [HttpPost]
-        public IActionResult Add(int userId, Goal goal)
+        public IActionResult Add(Goal goal)
         {
             if (ModelState.IsValid)
             {
-                _repository.CreateGoal(userId, goal);
+                _repository.CreateGoal(goal);
                 return RedirectToAction("Details", new {goalId = goal.GoalId});
             }
             return View(goal);
-        } // Register method ends
+        } // Add method ends
 
 
         //// Read
         public IActionResult Index(int userId, int goalPage = 1)
         {
-            IQueryable<Goal> allGoals = _repository.GetAllGoals(userId);
-            IQueryable<Goal> someGoals = allGoals
-                .OrderBy(goal => goal.GoalId)
-                .Skip((goalPage - 1) * _pageSize)
-                .Take(_pageSize);
-            PagingInfo pInfo = new PagingInfo
-            {
-                TotalItems = allGoals.Count(),
-                CurrentPage = goalPage,
-                ItemsPerPage = _pageSize
-            };
-            GoalListViewModel gLvM = new GoalListViewModel
-            {
-                PagingInfo = pInfo,
-                Goals = someGoals
-            };
+            IQueryable<Goal> allGoals = _repository.GetAllGoals();
+            //- IQueryable<Goal> someGoals = allGoals
+            //-     .OrderBy(goal => goal.GoalId)
+            //-     .Skip((goalPage - 1) * _pageSize)
+            //-     .Take(_pageSize);
+            //- PagingInfo pInfo = new PagingInfo
+            //- {
+            //-     TotalItems = allGoals.Count(),
+            //-     CurrentPage = goalPage,
+            //-     ItemsPerPage = _pageSize
+            //- };
+            //- GoalListViewModel gLvM = new GoalListViewModel
+            //- {
+            //-     PagingInfo = pInfo,
+            //-     Goals = someGoals
+            //- };
             return View(allGoals);
         } // Index method ends
         
@@ -77,10 +82,14 @@ namespace MSSA.Canvas_Your_Goals.Controllers
                 return View(goal);
             }
             return RedirectToAction("Index");
-        }
+        } // Edit HttpGet method ends
         [HttpPost]
         public IActionResult Edit(Goal goal)
         {
+            if (goal.StartDate > goal.EndDate)
+            {
+                ModelState.AddModelError("", "Start Date must be older than the End Date");
+            }
             if (ModelState.IsValid)
             {
                 _repository.UpdateGoal(goal);
@@ -102,9 +111,9 @@ namespace MSSA.Canvas_Your_Goals.Controllers
             return RedirectToAction("Index");
         } // Delete HttpGet method ends
         [HttpPost]
-        public IActionResult DeleteAction(Goal goal)
+        public IActionResult Delete(Goal goal)
         {
-            _repository.DeleteGoal(goal.GoalId);
+            _repository.DeleteGoal(goal);
             return RedirectToAction("Index");
         } // Delete HttpPost method ends
     } // class ends
