@@ -8,8 +8,6 @@ namespace MSSA.Canvas_Your_Goals.Models
         public Task CreateTask(Task addTask);
 
         // read
-        public IQueryable<Task> GetAllTasks();
-
         public IQueryable<Task> GetAllTasks(int goalId);
 
         public Task GetTaskById(int taskId);

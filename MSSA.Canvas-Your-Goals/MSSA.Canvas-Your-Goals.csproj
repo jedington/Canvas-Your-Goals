@@ -20,8 +20,4 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\Steps\" />
-  </ItemGroup>
-
 </Project>

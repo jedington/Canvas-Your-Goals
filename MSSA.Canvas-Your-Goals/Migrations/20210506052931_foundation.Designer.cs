@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MSSA.Canvas_Your_Goals.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210503233855_POCOTasks")]
-    partial class POCOTasks
+    [Migration("20210506052931_foundation")]
+    partial class foundation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,7 +52,7 @@ namespace MSSA.Canvas_Your_Goals.Migrations
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.Property<int?>("VisionBoardId")
@@ -60,7 +60,47 @@ namespace MSSA.Canvas_Your_Goals.Migrations
 
                     b.HasKey("GoalId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Goal");
+                });
+
+            modelBuilder.Entity("MSSA.Canvas_Your_Goals.Models.Step", b =>
+                {
+                    b.Property<int>("StepId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Details")
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StepName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<int?>("StepOrder")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TaskId")
+                        .HasColumnType("int");
+
+                    b.HasKey("StepId");
+
+                    b.HasIndex("TaskId");
+
+                    b.ToTable("Step");
                 });
 
             modelBuilder.Entity("MSSA.Canvas_Your_Goals.Models.Task", b =>
@@ -113,9 +153,11 @@ namespace MSSA.Canvas_Your_Goals.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
+                    b.Property<bool?>("IsAdmin")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Password")
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityAnswer")
                         .HasMaxLength(40)
@@ -127,7 +169,21 @@ namespace MSSA.Canvas_Your_Goals.Migrations
 
                     b.HasKey("UserId");
 
+                    b.HasIndex("Email")
+                        .IsUnique();
+
                     b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            Email = "johnnybravo@example.com",
+                            IsAdmin = false,
+                            Password = "wakkawakkawakka",
+                            SecurityAnswer = "answer",
+                            SecurityHint = "hint"
+                        });
                 });
 
             modelBuilder.Entity("MSSA.Canvas_Your_Goals.Models.VisionBoard", b =>
@@ -149,6 +205,28 @@ namespace MSSA.Canvas_Your_Goals.Migrations
                     b.ToTable("VisionBoard");
                 });
 
+            modelBuilder.Entity("MSSA.Canvas_Your_Goals.Models.Goal", b =>
+                {
+                    b.HasOne("MSSA.Canvas_Your_Goals.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MSSA.Canvas_Your_Goals.Models.Step", b =>
+                {
+                    b.HasOne("MSSA.Canvas_Your_Goals.Models.Task", "Task")
+                        .WithMany("Steps")
+                        .HasForeignKey("TaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Task");
+                });
+
             modelBuilder.Entity("MSSA.Canvas_Your_Goals.Models.Task", b =>
                 {
                     b.HasOne("MSSA.Canvas_Your_Goals.Models.Goal", "Goal")
@@ -163,6 +241,11 @@ namespace MSSA.Canvas_Your_Goals.Migrations
             modelBuilder.Entity("MSSA.Canvas_Your_Goals.Models.Goal", b =>
                 {
                     b.Navigation("Tasks");
+                });
+
+            modelBuilder.Entity("MSSA.Canvas_Your_Goals.Models.Task", b =>
+                {
+                    b.Navigation("Steps");
                 });
 #pragma warning restore 612, 618
         }

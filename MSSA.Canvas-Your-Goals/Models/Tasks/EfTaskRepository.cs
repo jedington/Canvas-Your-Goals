@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace MSSA.Canvas_Your_Goals.Models
@@ -8,47 +7,58 @@ namespace MSSA.Canvas_Your_Goals.Models
     {
         // fields
         private AppDbContext _context;
+        private IUserRepository _userRepository;
 
 
         // constructors
-        public EfTaskRepository(AppDbContext context)
-            => _context = context;
-        // EfTaskRepository const ends
+        public EfTaskRepository(AppDbContext context, IUserRepository userRepository)
+        {
+            _context = context;
+            _userRepository = userRepository;
+        } // EfTaskRepository const ends
 
         
         // methods
         //// create
         public Task CreateTask(Task task)
         {
-            try
+            if (_userRepository.IsUserLoggedIn())
             {
                 _context.Tasks.Add(task);
                 _context.SaveChanges();
+                return task;
             }
-            #pragma warning disable CS0168 // Variable is declared but never used
-            catch (Exception e)
-            #pragma warning restore CS0168 // Variable is declared but never used
-            {
-                return null;
-            }
-            return task;
+            return null;
         } // CreateTask method ends
 
 
         //// read
-        public IQueryable<Task> GetAllTasks()
-            => _context.Tasks; // F-Magic
-        // GetAllTasks method ends
-
         public IQueryable<Task> GetAllTasks(int goalId)
-            => _context.Tasks.Where(t => t.GoalId == goalId);
-        // GetAllTasks method ends
+        {
+            if (_userRepository.IsUserLoggedIn())
+            {
+                return _context.Tasks.Where(t => t.Goal.UserId == _userRepository.GetLoggedInUserId());
+            }
+            Task[] noTasks = new Task[0];
+            return noTasks.AsQueryable();
+        } // GetAllTasks method ends
 
         public Task GetTaskById(int taskId)
-            => _context.Tasks
-                .Include(t => t.Goal)
-                .FirstOrDefault(t => t.TaskId == taskId);
-        // GetTaskById method ends
+        {
+            if (_userRepository.IsUserLoggedIn())
+            {
+                Task task = _context.Tasks
+                    .Include(t => t.Steps)
+                    .FirstOrDefault(t => t.TaskId == taskId && t.Goal.UserId == _userRepository.GetLoggedInUserId());
+                if (task != null)
+                {
+                    task.Steps = task.Steps.OrderBy(s => s.StepOrder);
+                }
+                return task;
+            }
+            return null;
+        } // GetTaskById method ends
+
 
         //// update
         public Task UpdateTask(Task task)
@@ -62,16 +72,7 @@ namespace MSSA.Canvas_Your_Goals.Models
                 taskToUpdate.StartDate = task.StartDate;
                 taskToUpdate.EndDate = task.EndDate;
                 taskToUpdate.Details = task.Details;
-                try
-                {
-                    _context.SaveChanges();
-                }
-                #pragma warning disable CS0168 // Variable is declared but never used
-                catch (Exception e)
-                #pragma warning restore CS0168 // Variable is declared but never used
-                {
-                    return null;
-                }
+                _context.SaveChanges();
             }
             return taskToUpdate;
         } // UpdateTask method ends

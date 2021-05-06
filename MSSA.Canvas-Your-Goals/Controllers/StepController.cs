@@ -4,46 +4,46 @@ using MSSA.Canvas_Your_Goals.Models;
 
 namespace MSSA.Canvas_Your_Goals.Controllers
 {
-    public class TaskController : Controller
+    public class StepController : Controller
     {
         // fields
-        private ITaskRepository _repository;
+        private IStepRepository _repository;
 
 
         // constructors
-        public TaskController(ITaskRepository repository)
+        public StepController(IStepRepository repository)
             => _repository = repository;
-        // TaskController const ends
+        // StepController const ends
 
 
         // methods
         //// Create
         [HttpGet]
-        public IActionResult Add(int goalId)
-            => View(new Task
+        public IActionResult Add(int taskId)
+            => View(new Step
             {
-                GoalId = goalId, 
+                TaskId = taskId, 
                 StartDate = DateTime.Now.Date
             });
         [HttpPost]
-        public IActionResult Add(Task task)
+        public IActionResult Add(Step step)
         {
             if (ModelState.IsValid)
             {
-                _repository.CreateTask(task);
-                return RedirectToAction("Details", new {taskId = task.TaskId});
+                _repository.CreateStep(step);
+                return RedirectToAction("Details", new {stepId = step.StepId});
             }
-            return View(task);
+            return View(step);
         } // Register method ends
 
 
         //// Read
-        public IActionResult Details(int taskId)
+        public IActionResult Details(int stepId)
         {
-            Task task = _repository.GetTaskById(taskId);
-            if (task != null)
+            Step step = _repository.GetStepById(stepId);
+            if (step != null)
             {
-                return View(task);
+                return View(step);
             }
             return RedirectToAction("Index", "User");
         } // Details method ends
@@ -51,46 +51,46 @@ namespace MSSA.Canvas_Your_Goals.Controllers
 
         //// Update
         [HttpGet]
-        public IActionResult Edit(int taskId)
+        public IActionResult Edit(int stepId)
         {
-            Task task = _repository.GetTaskById(taskId);
-            if (task != null)
+            Step step = _repository.GetStepById(stepId);
+            if (step != null)
             {
-                return View(task);
+                return View(step);
             }
             return RedirectToAction("Index", "User");
         } // Edit HttpGet method ends
         [HttpPost]
-        public IActionResult Edit(Task task)
+        public IActionResult Edit(Step step)
         {
-            if (task.StartDate > task.EndDate)
+            if (step.StartDate > step.EndDate)
             {
                 ModelState.AddModelError("", "Start Date must be older than the End Date");
             }
             if (ModelState.IsValid)
             {
-                _repository.UpdateTask(task);
-                return RedirectToAction("Details", new {taskId = task.TaskId});
+                _repository.UpdateStep(step);
+                return RedirectToAction("Details", new {stepId = step.StepId});
             }
-            return View(task);
+            return View(step);
         } // Edit method ends
 
 
         //// Delete
         [HttpGet]
-        public IActionResult Delete(int taskId)
+        public IActionResult Delete(int stepId)
         {
-            Task task = _repository.GetTaskById(taskId);
-            if (task != null)
+            Step step = _repository.GetStepById(stepId);
+            if (step != null)
             {
-                return View(task);
+                return View(step);
             }
             return RedirectToAction("Index", "User");
         } // Delete HttpGet method ends
         [HttpPost]
-        public IActionResult Delete(Task task)
+        public IActionResult Delete(Step step)
         {
-            _repository.DeleteTask(task);
+            _repository.DeleteStep(step);
             return RedirectToAction("Index", "Goal");
         } // Delete HttpPost method ends
     } // class ends

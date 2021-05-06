@@ -1,11 +1,11 @@
 ﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
-const root = document.documentElement
+const root = document.documentElement;
 const themeBtns = document.querySelectorAll('.theme > button');
 themeBtns.forEach((btn) => {
     btn.addEventListener('click', handleThemeUpdate);
-})
+});
 function setTheme(themeName) {
     localStorage.setItem('theme', themeName);
     document.documentElement.className = themeName;

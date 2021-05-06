@@ -4,7 +4,6 @@
     ViewData["Title"] = "Add Task";
 }
 
-<header> <partial name="LoggedInNav" /> </header>
 <fieldset class="shadow centered">
     <legend> @ViewData["Title"] </legend>
     <form method="post">
@@ -28,7 +27,7 @@
                 </tr>
                 <tr>
                     <th> Task Order: </th>
-                    <td> <input asp-for="TaskOrder" type="range" /> </td>
+                    <td> <input asp-for="TaskOrder" type="number" /> </td>
                 </tr>
                 <tr>
                     <th> Status: </th>

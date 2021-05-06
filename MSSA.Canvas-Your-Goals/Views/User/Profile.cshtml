@@ -4,11 +4,10 @@
     ViewData["Title"] = $"User Profile: {@Model.Email}";
 }
 
-<header> <partial name="LoggedInNav" /> </header>
-<h3 class="bg-primary text-white m-2 p-2"> @ViewData["Title"] </h3>
+<h3 class="bg-dark text-white m-2 p-2"> @ViewData["Title"] </h3>
 <table class="centered table-bordered table-striped table-sm">
     <tr>
-        <th> Goal Name: </th>
+        <th> Email: </th>
         <td> @Model.Email </td>
     </tr>
     <tr>
@@ -25,13 +24,16 @@
     </tr>
     <tr>
         <td class="text-center" colspan="2">
-            <a class="btn btn-info ml-1 mr-1" asp-controller="User" asp-action="Index" asp-route-userId="@Model.UserId">
-                Back
+            <a class="btn btn-info ml-1 mr-1" asp-controller="User" asp-action="Index">
+                Home
             </a>
-            <a class="btn btn-warning ml-1 mr-1" asp-controller="User" asp-action="Edit" asp-route-userId="@Model.UserId">
+            <a class="btn btn-warning ml-1 mr-1" asp-controller="User" asp-action="Edit">
                 Edit
             </a>
-            <a class="btn btn-danger ml-1 mr-1" asp-controller="User" asp-action="Delete" asp-route-userId="@Model.UserId">
+            <a class="btn btn-warning ml-1 mr-1" asp-controller="User" asp-action="ChangePassword">
+                Change Password
+            </a>
+            <a class="btn btn-danger ml-1 mr-1" asp-controller="User" asp-action="Delete">
                 Delete Account?!
             </a>
         </td>

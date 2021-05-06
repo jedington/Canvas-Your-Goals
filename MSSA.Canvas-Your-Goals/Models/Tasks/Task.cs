@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc;
@@ -17,6 +18,9 @@ namespace MSSA.Canvas_Your_Goals.Models
         public int GoalId { get; set; }
 
         public Goal Goal { get; set; }
+
+        public IEnumerable<Step> Steps { get; set; }
+
 
         [MaxLength(30, ErrorMessage = "Task Name is Limited to 30 total characters")]
         [Required(ErrorMessage = "A Name is Required")]

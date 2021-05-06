@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using MSSA.Canvas_Your_Goals.Models;
 
 namespace MSSA.Canvas_Your_Goals.Controllers
@@ -20,23 +19,34 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         //// Create
         [HttpGet]
         public IActionResult Register() // Add!
-            => View(new User());
+            => View();
         [HttpPost]
-        public IActionResult Register(User user) // Add!
+        public IActionResult Register(RegisterVM userReg) // Add!
         {
             if (ModelState.IsValid)
             {
-                _repository.CreateUser(user);
-                return RedirectToAction("Index", new {userId = user.UserId});
+                User user = new User();
+                user.IsAdmin = false;
+                user.Email = userReg.Email;
+                user.Password = userReg.Password;
+                user.SecurityHint = userReg.SecurityHint;
+                user.SecurityAnswer = userReg.SecurityAnswer;
+                User newUser = _repository.CreateUser(user);
+                if (newUser == null)
+                {
+                    ModelState.AddModelError("", "This user already exists!");
+                    return View(userReg);
+                }
+                return RedirectToAction("Index", "User");
             }
-            return View(user);
+            return View(userReg);
         } // Register method ends
 
 
         //// Read
-        public IActionResult Index(int userId)
+        public IActionResult Index()
         {
-            User user = _repository.GetUserById(userId);
+            User user = _repository.GetUserById(_repository.GetLoggedInUserId());
             if (user != null)
             {
                 return View(user);
@@ -44,9 +54,9 @@ namespace MSSA.Canvas_Your_Goals.Controllers
             return RedirectToAction("Login");
         } // Index method ends
 
-        public IActionResult Profile(int userId)
+        public IActionResult Profile()
         {
-            User user = _repository.GetUserById(userId);
+            User user = _repository.GetUserById(_repository.GetLoggedInUserId());
             if (user != null)
             {
                 return View(user);
@@ -61,12 +71,19 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         [HttpPost]
         public IActionResult Login(User user)
         {
-            if (ModelState.IsValid)
+            bool loggedIn = _repository.Login(user);
+            if (loggedIn && ModelState.IsValid)
             {
-                return RedirectToAction("Index", User.Identity);
+                return RedirectToAction("Index", "User");
             }
             return View(user);
         } // Login method ends
+
+        public IActionResult Logout()
+        {
+            _repository.Logout();
+            return RedirectToAction("Index", "Home");
+        } // Logout method ends
 
         [HttpGet]
         public IActionResult ForgotPassword()
@@ -76,7 +93,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction("ResetPassword", User.Identity);
+                return RedirectToAction("ResetPassword", new {userId = user.UserId});
             }
             return View(user);
         } // ForgotPassword method ends
@@ -84,9 +101,9 @@ namespace MSSA.Canvas_Your_Goals.Controllers
 
         //// update
         [HttpGet]
-        public IActionResult Edit(int userId)
+        public IActionResult Edit()
         {
-            User user = _repository.GetUserById(userId);
+            User user = _repository.GetUserById(_repository.GetLoggedInUserId());
             if (user != null)
             {
                 return View(user);
@@ -99,38 +116,57 @@ namespace MSSA.Canvas_Your_Goals.Controllers
             if (ModelState.IsValid)
             {
                 _repository.UpdateUser(user);
-                return RedirectToAction("Profile", new {userId = user.UserId});
+                return RedirectToAction("Profile");
             }
             return View(user);
         } // Edit HttpPost method ends
 
         [HttpGet]
-        public IActionResult ResetPassword(int userId)
-        {
-            User user = _repository.GetUserById(userId);
-            if (user != null)
-            {
-                return View(user);
-            }
-            return RedirectToAction("Login");
-        } // ResetPassword HttpGet method ends
+        public IActionResult ChangePassword()
+            => View();
         [HttpPost]
-        public IActionResult ResetPassword(User user)
+        public IActionResult ChangePassword(ChangePasswordVM changePwd)
         {
             if (ModelState.IsValid)
             {
-                _repository.UpdateUser(user);
-                return RedirectToAction("Profile", new {userId = user.UserId});
+                bool success = _repository
+                    .ChangePassword(changePwd.CurrentPassword, changePwd.NewPassword);
+                if (success)
+                {
+                    return RedirectToAction("Profile");
+                }
+                ModelState.AddModelError("", "Unable to Change Password");
+                return View(changePwd);
             }
-            return View(user);
-        } // ResetPassword HttpPost method ends
+            return View(changePwd);
+        } // ChangePassword method ends
+
+        [HttpGet]
+        public IActionResult ResetPassword()
+            => View();
+        [HttpPost]
+        public IActionResult ResetPassword(ResetPasswordVM resetPwd)
+        {
+            if (ModelState.IsValid)
+            {
+                bool success = _repository
+                    .ResetPassword(resetPwd.Email, resetPwd.NewPassword);
+                if (success)
+                {
+                    return RedirectToAction("Profile");
+                }
+                ModelState.AddModelError("", "Unable to Change Password");
+                return View(resetPwd);
+            }
+            return View(resetPwd);
+        } // ChangePassword method ends
 
 
         //// delete
         [HttpGet]
-        public IActionResult Delete(int userId)
+        public IActionResult Delete()
         {
-            User user = _repository.GetUserById(userId);
+            User user = _repository.GetUserById(_repository.GetLoggedInUserId());
             if (user != null)
             {
                 return View(user);
@@ -138,9 +174,9 @@ namespace MSSA.Canvas_Your_Goals.Controllers
             return RedirectToAction("Login");
         } // Delete HttpGet method ends
         [HttpPost]
-        public IActionResult DeleteAction(User user)
+        public IActionResult Delete(User user)
         {
-            _repository.DeleteUser(user.UserId);
+            _repository.DeleteUser(user);
             return RedirectToAction("Login");
         } // Delete HttpPost method ends
     } // class ends

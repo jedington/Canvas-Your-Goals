@@ -1,39 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MSSA.Canvas_Your_Goals.Models
 {
-    [Table("Goal")]
-    public class Goal
+    [Table("Step")]
+    public class Step
     {
         [HiddenInput(DisplayValue = false)]
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int GoalId { get; set; }
+        public int StepId { get; set; }
 
         [HiddenInput(DisplayValue = false)]
-        //- [ForeignKey(nameof(User.UserId))]
-        public int UserId { get; set; }
+        //- [ForeignKey(nameof(Task.TaskId))]
+        public int TaskId { get; set; }
 
-        public User User { get; set; }
+        public Task Task { get; set; }
 
-        [HiddenInput(DisplayValue = false)]
-        //- [ForeignKey(nameof(VisionBoard.VisionBoardId))]
-        public int? VisionBoardId { get; set; } // ? temp -- One-to-Many rel for VB-to-Goals
-        
-        public IEnumerable<Task> Tasks { get; set; }
-
-        [MaxLength(30, ErrorMessage = "Goal Name is Limited to 30 total characters")]
+        [MaxLength(30, ErrorMessage = "Step Name is Limited to 30 total characters")]
         [Required(ErrorMessage = "A Name is Required")]
-        public string GoalName { get; set; }
+        public string StepName { get; set; }
 
-        public string Priority { get; set; }
+        public int? StepOrder { get; set; }
 
         public string Status { get; set; }
-
-        public string Type { get; set; }
 
         [DataType(DataType.Date), Required(ErrorMessage = "A Start Date is Required")]
         public DateTime StartDate { get; set; }

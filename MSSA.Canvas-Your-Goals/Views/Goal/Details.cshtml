@@ -5,7 +5,6 @@
     ViewData["Title"] = "Goal Details";
 }
 
-<header> <partial name="LoggedInNav" /> </header>
 <div class="flex-row justify-content-center">
 <fieldset class="flex-div shadow">
     <legend> @ViewData["Title"] </legend>
@@ -43,7 +42,7 @@
         <tfoot>
             <tr>
                 <td class="text-center" colspan="2">
-                    <a class="btn btn-info ml-1 mr-1" asp-controller="Goal" asp-action="Index" asp-route-userId="@Model.UserId">
+                    <a class="btn btn-info ml-1 mr-1" asp-controller="Goal" asp-action="Index">
                         Back
                     </a>
                     <a class="btn btn-warning ml-1 mr-1" asp-controller="Goal" asp-action="Edit" asp-route-goalId="@Model.GoalId">
@@ -78,8 +77,8 @@
                 <td class="pr-1 text-center"> @task.TaskName </td>
                 <td class="pr-1 text-center"> @task.TaskOrder </td>
                 <td class="pr-1 text-center"> @task.Status </td>
-                <td class="pr-1 text-center"> @task.StartDate </td>
-                <td class="pr-1 text-center"> @task.EndDate </td>
+                <td class="pr-1 text-center"> @task.StartDate.ToString("MM/dd/yyyy") </td>
+                <td class="pr-1 text-center"> @task.EndDate?.ToString("MM/dd/yyyy") </td>
                 <td class="pr-1 text-center">
                     <a asp-controller="Task" asp-action="Details" asp-route-taskId="@task.TaskId" class="btn btn-sm btn-outline-info ml-1 mr-1">
                         View

@@ -1,0 +1,54 @@
+﻿@model Step
+
+@{
+    ViewData["Title"] = "Step Details";
+}
+
+<div class="flex-row justify-content-center">
+<fieldset class="flex-div shadow">
+    <legend> @ViewData["Title"] </legend>
+    <table class="table-bordered table-striped table-sm">
+        <tbody>
+            <tr>
+                <th> Goal Name: </th>
+                <td> @Model.StepName </td>
+            </tr>
+            <tr>
+                <th> Task Order: </th>
+                <td> @Model.StepOrder </td>
+            </tr>
+            <tr>
+                <th> Status: </th>
+                <td> @Model.Status </td>
+            </tr>
+            <tr>
+                <th> Start Date: </th>
+                <td> @Model.StartDate.ToString("MM/dd/yyyy") </td>
+            </tr>
+            <tr>
+                <th> End Date: </th>
+                <td> @Model.EndDate?.ToString("MM/dd/yyyy") </td>
+            </tr>
+            <tr>
+                <th> Details: </th>
+                <td> @Model.Details </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="text-center" colspan="2">
+                    <a class="btn btn-info ml-1 mr-1" asp-controller="Task" asp-action="Details" asp-route-taskId="@Model.TaskId">
+                        Back
+                    </a>
+                    <a class="btn btn-warning ml-1 mr-1" asp-controller="Step" asp-action="Edit" asp-route-stepId="@Model.StepId">
+                        Edit
+                    </a>
+                    <a class="btn btn-danger ml-1 mr-1" asp-controller="Step" asp-action="Delete" asp-route-stepId="@Model.StepId">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</fieldset>
+</div>

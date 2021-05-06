@@ -1,4 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using Microsoft.AspNetCore.Http;
 
 namespace MSSA.Canvas_Your_Goals.Models
 {
@@ -6,29 +10,95 @@ namespace MSSA.Canvas_Your_Goals.Models
     {
         // fields
         private AppDbContext _context;
-
+        private ISession _session;
 
         // constructors
-        public EfUserRepository(AppDbContext context)
-            => _context = context;
-        // EfUserRepository const ends
+        public EfUserRepository(AppDbContext context, IHttpContextAccessor httpContext)
+        {
+            _context = context;
+            _session = httpContext.HttpContext.Session;
+        } // EfUserRepository const ends
 
 
         // methods
         //// create
         public User CreateUser(User user)
         {
-            _context.Users.Add(user);
-            _context.SaveChanges();
-            return user;
-        }
+            user.Password = EncryptPassword(user.Password);
+            User existingUser = GetUserByEmail(user.Email);
+            if (existingUser != null)
+            {
+                return null;
+            }
+            try
+            {
+                _context.Users.Add(user);
+                _context.SaveChanges();
+                return user;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        } // CreateUser method ends
         
+
         //// read
+        public IQueryable<User> GetAllUsers()
+            => _context.Users;
+        // GetAllUsers method ends
+
+        public User GetUserByEmail(string email)
+            => _context.Users.FirstOrDefault(u => u.Email == email);
+        // GetUserByEmail method ends
+
         public User GetUserById(int userId)
-            //- User user = _context.Users
-            //-     .Where(user => user.UserId == userId).FirstOrDefault();
             => _context.Users.FirstOrDefault(u => u.UserId == userId);
-         // GetUserById method ends
+        // GetUserById method ends
+
+        public bool Login(User user)
+        {
+            string encryptPwd = EncryptPassword(user.Password);
+            User existingUser = _context.Users.FirstOrDefault
+                (u => u.Email == user.Email && u.Password == encryptPwd);
+            if (existingUser == null || existingUser.Password != encryptPwd)
+            {
+                return false;
+            }
+            _session.SetInt32("userid", existingUser.UserId);
+            _session.SetString("email", user.Email);
+            return true;
+        } // Login method ends
+        public void Logout()
+        {
+            _session.Remove("userid");
+            _session.Remove("email");
+        }
+
+        public bool IsUserLoggedIn()
+        {
+            int? userId = _session.GetInt32("userid");
+            if (userId == null)
+            {
+                return false;
+            }
+            return true;
+        } // IsUserLoggedIn method ends
+
+        public int GetLoggedInUserId()
+        {
+            int? userId = _session.GetInt32("userid");
+            if (userId == null)
+            {
+                return -1;
+            }
+            return userId.Value;
+        } // GetLoggedInUserId method ends
+
+        public string GetLoggedInEmail()
+        {
+            return _session.GetString("email");
+        } // GetLoggedInEmail
 
 
         //// update
@@ -38,7 +108,6 @@ namespace MSSA.Canvas_Your_Goals.Models
             if (userToUpdate != null)
             {
                 userToUpdate.Email = user.Email;
-                userToUpdate.Password = user.Password;
                 userToUpdate.SecurityHint = user.SecurityHint;
                 userToUpdate.SecurityAnswer = user.SecurityAnswer;
                 _context.SaveChanges();
@@ -46,11 +115,42 @@ namespace MSSA.Canvas_Your_Goals.Models
             return userToUpdate;
         } // UpdateUser method ends
 
+        public bool ChangePassword(string oldPassword, string newPassword)
+        {
+            if (!IsUserLoggedIn())
+            {
+                return false;
+            }
+            User userToUpdate = GetUserById(GetLoggedInUserId());
+            if (userToUpdate != null && userToUpdate.Password == oldPassword)
+            {
+                userToUpdate.Password = EncryptPassword(newPassword);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
+        } // ChangePassword method ends
+
+        public bool ResetPassword(string email, string newPassword)
+        {
+            if (IsUserLoggedIn())
+            {
+                return false;
+            }
+            User userToUpdate = GetUserByEmail(email);
+            if (userToUpdate != null)
+            {
+                userToUpdate.Password = EncryptPassword(newPassword);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
+        } // ChangePassword method ends
+
 
         //// delete
         public bool DeleteUser(int userId)
         {
-            // User userToDelete = _context.Users.Find(id);
             User userToDelete = GetUserById(userId);
             if (userToDelete == null)
             {
@@ -59,7 +159,32 @@ namespace MSSA.Canvas_Your_Goals.Models
             _context.Users.Remove(userToDelete);
             _context.SaveChanges();
             return true;
-        } // DeleteUser method ends
+        } // DeleteUser (UserId) method ends
+        public bool DeleteUser(User user)
+            => DeleteUser(user.UserId);
+        // DeleteUser (User) method ends
 
+
+        ////// private methods
+        private string EncryptPassword(string pwd)
+        {
+            SHA256 hashAlgo = SHA256.Create();
+            byte[] pwdArray = Encoding.ASCII.GetBytes(pwd);
+            pwdArray[0] += 3; pwdArray[2] -= 6; pwdArray[4] += 1;
+            byte[] encryptPwdArray = hashAlgo.ComputeHash(pwdArray);
+            string result = BitConverter.ToString(encryptPwdArray);
+            result = result.Replace("-", "");
+            return result;
+        } // EncryptPassword
+        private string GenerateRandomPassword()
+        {
+            Random rng = new Random();
+            string result = "";
+            while (result.Length < 13)
+            {
+                result = result + (char)rng.Next(33, 126);
+            }
+            return result;
+        } // GenerateRandomPassword
     } // class ends
 } // namespace ends

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace MSSA.Canvas_Your_Goals.Models
@@ -8,56 +7,66 @@ namespace MSSA.Canvas_Your_Goals.Models
     {
         // fields
         private AppDbContext _context;
+        private IUserRepository _userRepository;
 
 
         // constructors
-        public EfGoalRepository(AppDbContext context)
-            => _context = context;
-        // EfGoalRepository const ends
+        public EfGoalRepository(AppDbContext context, IUserRepository userRepository)
+        {
+            _context = context;
+            _userRepository = userRepository;
+        } // EfGoalRepository const ends
 
 
         // methods
         //// create
         public Goal CreateGoal(Goal goal)
         {
-            try
+            if (_userRepository.IsUserLoggedIn())
             {
+                goal.UserId = _userRepository.GetLoggedInUserId();
                 _context.Goals.Add(goal);
                 _context.SaveChanges();
+                return goal;
             }
-            #pragma warning disable CS0168 // Variable is declared but never used
-            catch (Exception e)
-            #pragma warning restore CS0168 // Variable is declared but never used
-            {
-                return null;
-            }
-            return goal;
+            return null;
         } // CreateGoal method ends
 
 
         //// read
-        public IQueryable<Goal> GetAllGoals()
-            => _context.Goals; // F-Magic
-        // GetAllGoals method ends
-
         public IQueryable<Goal> GetAllGoals(int userId)
-            => _context.Goals.Where(g => g.UserId == userId);
-        // GetAllGoals method ends
+        {
+            if (_userRepository.IsUserLoggedIn())
+            {
+                return _context.Goals.Where(g => g.UserId == _userRepository.GetLoggedInUserId());
+            }
+            Goal[] noGoals = new Goal[0];
+            return noGoals.AsQueryable();
+        } // GetAllGoals method ends
+
+        public Goal GetGoalById(int goalId)
+        {
+            if (_userRepository.IsUserLoggedIn())
+            {
+                Goal goal = _context.Goals
+                    .Include(g => g.Tasks)
+                    .FirstOrDefault(g => g.GoalId == goalId && g.UserId == _userRepository.GetLoggedInUserId());
+                if (goal != null)
+                {
+                    goal.Tasks = goal.Tasks.OrderBy(t => t.TaskOrder);
+                }
+                return goal;
+            }
+            return null;
+        } // GetGoalById method ends
 
         public IQueryable<string> GetAllCategories()
             => _context.Goals.Select(g => g.Type).Distinct();
         // GetAllCategories method ends
-
-        public Goal GetGoalById(int goalId) 
-            => _context.Goals
-                //- .Include(g => g.User)
-                .Include(g => g.Tasks.OrderBy(t => t.TaskOrder))
-                .FirstOrDefault(g => g.GoalId == goalId);
-        // GetGoalById method ends
-
         public IQueryable<Goal> GetGoalsByKeyword(string keyword)
             => _context.Goals.Where(goal => goal.GoalName.Contains(keyword));
         // GetGoalsByKeyword method ends
+
 
         //// update
         public Goal UpdateGoal(Goal goal)
@@ -71,16 +80,7 @@ namespace MSSA.Canvas_Your_Goals.Models
                 goalToUpdate.Type = goal.Type;
                 goalToUpdate.StartDate = goal.StartDate;
                 goalToUpdate.EndDate = goal.EndDate;
-                try
-                {
-                    _context.SaveChanges();
-                }
-                #pragma warning disable CS0168 // Variable is declared but never used
-                catch (Exception e)
-                #pragma warning restore CS0168 // Variable is declared but never used
-                {
-                    return null;
-                }
+                _context.SaveChanges();
             }
             return goalToUpdate;
         } // UpdateGoal method ends
@@ -99,6 +99,5 @@ namespace MSSA.Canvas_Your_Goals.Models
             _context.SaveChanges();
             return true;
         } // DeleteGoal method ends
-
     } // class ends
 } // namespace ends

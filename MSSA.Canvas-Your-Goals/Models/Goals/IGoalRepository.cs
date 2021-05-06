@@ -9,14 +9,12 @@ namespace MSSA.Canvas_Your_Goals.Models
 
 
         // read
-        public IQueryable<Goal> GetAllGoals();
-
         public IQueryable<Goal> GetAllGoals(int userId);
 
-        public IQueryable<string> GetAllCategories();
 
         public Goal GetGoalById(int goalId);
 
+        public IQueryable<string> GetAllCategories();
         public IQueryable<Goal> GetGoalsByKeyword(string keyword);
 
 

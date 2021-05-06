@@ -1,19 +1,20 @@
-﻿@model Goal
+﻿@model Step
 
 @{
-    ViewData["Title"] = "Delete Goal";
+    ViewData["Title"] = "Delete Step";
 }
+
 <fieldset class="shadow centered">
     <legend> @ViewData["Title"] </legend>
     <table class="table-bordered table-striped table-sm">
         <tbody>
             <tr>
                 <th> Goal Name: </th>
-                <td> @Model.GoalName </td>
+                <td> @Model.StepName </td>
             </tr>
             <tr>
                 <th> Priority: </th>
-                <td> @Model.Priority </td>
+                <td> @Model.StepOrder </td>
             </tr>
             <tr>
                 <th> Status: </th>
@@ -21,34 +22,25 @@
             </tr>
             <tr>
                 <th> Type: </th>
-                <td> @Model.Type </td>
-            </tr>
-            <tr>
-                <th> Start Date: </th>
                 <td> @Model.StartDate.ToString("MM/dd/yyyy") </td>
             </tr>
             <tr>
-                <th> End Date: </th>
+                <th> Start Date: </th>
                 <td> @Model.EndDate?.ToString("MM/dd/yyyy") </td>
             </tr>
-        </tbody>
-        <tfoot>
             <tr>
                 <td class="text-center btn-outline-warning" colspan="2">
                     <h2> Are You Sure? </h2>
                 </td>
             </tr>
+        </tbody>
+        <tfoot>
             <tr>
                 <td class="text-center" colspan="2">
                     <form method="post">
-                        <input type="hidden" asp-for="GoalId" />
+                        <input type="hidden" asp-for="StepId" />
                         <input type="submit" value="Delete" class="btn btn-danger ml-1 mr-1" />
-                        @*
-                            <button class="btn btn-danger ml-1 mr-1" asp-controller="Goal" asp-action="Delete" asp-route-goalId="@Model.GoalId">
-                                Delete
-                            </button>
-                        *@
-                        <button class="btn btn-secondary ml-1 mr-1" asp-controller="Goal" asp-action="Index" formmethod="get">
+                        <button class="btn btn-secondary ml-1 mr-1" asp-controller="Task" asp-action="Details" asp-route-goalId="@Model.TaskId" formmethod="get">
                             Cancel
                         </button>
                     </form>

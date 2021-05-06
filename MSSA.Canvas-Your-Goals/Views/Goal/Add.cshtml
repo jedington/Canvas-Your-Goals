@@ -4,7 +4,6 @@
     ViewData["Title"] = "Add Goal";
 }
 
-<header> <partial name="LoggedInNav" /> </header>
 <fieldset class="shadow centered">
     <legend> @ViewData["Title"] </legend>
     <form method="post">
@@ -87,7 +86,7 @@
                             Submit
                         </a>
                         -->
-                        <a class="btn btn-secondary ml-1 mr-1" asp-controller="Goal" asp-action="Index" asp-route-userId="@Model.UserId">
+                        <a class="btn btn-secondary ml-1 mr-1" asp-controller="Goal" asp-action="Index">
                             Cancel
                         </a>
                     </td>

@@ -1,14 +1,14 @@
-﻿@model MSSA.Canvas_Your_Goals.Models.Task
+﻿@model Step
 
 @{
-    ViewData["Title"] = "Edit Task";
+    ViewData["Title"] = "Add Step";
 }
 
 <fieldset class="shadow centered">
     <legend> @ViewData["Title"] </legend>
     <form method="post">
+        <input asp-for="StepId" type="hidden" />
         <input asp-for="TaskId" type="hidden" />
-        <input asp-for="GoalId" type="hidden" />
         <table class="table-bordered table-striped table-sm">
             @if (ViewData.ModelState.ErrorCount > 0)
             {
@@ -22,18 +22,18 @@
             }
             <tbody>
                 <tr>
-                    <th> Task Name: </th>
-                    <td> <input asp-for="TaskName" /> </td>
+                    <th> Step Name: </th>
+                    <td> <input asp-for="StepName" /> </td>
                 </tr>
                 <tr>
-                    <th> Task Order: </th>
-                    <td> <input asp-for="TaskOrder" type="number" /> </td>
+                    <th> Step Order: </th>
+                    <td> <input asp-for="StepOrder" type="number" /> </td>
                 </tr>
                 <tr>
-                    <th>Status:</th>
+                    <th> Status: </th>
                     <td>
                         <select asp-for="Status">
-                            <option value=""> @Model.Status </option>
+                            <option value=""> - Select - </option>
                             <option value="Finished">Finished</option>
                             <option value="In Progress">In Progress</option>
                             <option value="Problem">Problem</option>
@@ -57,8 +57,8 @@
             <tfoot>
                 <tr>
                     <td class="text-center" colspan="2">
-                        <input class="btn btn-primary ml-1 mr-1" type="submit" value="Edit Task!" />
-                        <a class="btn btn-secondary ml-1 mr-1" asp-controller="Goal" asp-action="Details" asp-route-goalId="@Model.GoalId">
+                        <input class="btn btn-primary ml-1 mr-1" type="submit" value="Create Task!" />
+                        <a class="btn btn-secondary ml-1 mr-1" asp-controller="Task" asp-action="Details" asp-route-taskId="@Model.TaskId">
                             Cancel
                         </a>
                     </td>

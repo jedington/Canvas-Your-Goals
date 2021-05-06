@@ -8,23 +8,26 @@ namespace MSSA.Canvas_Your_Goals.Controllers
     public class GoalController : Controller
     {
         // fields
-        private int _pageSize = 10;
+        //- private int _pageSize = 10;
         private IGoalRepository _repository;
+        private IUserRepository _userRepository;
 
 
         // constructors
-        public GoalController(IGoalRepository repository)
-            => _repository = repository;
-        // GoalController const ends
+        public GoalController(IGoalRepository repository, IUserRepository userRepository)
+        {
+            _repository = repository;
+            _userRepository = userRepository;
+        } // GoalController const ends
 
         
         // methods
         //// Create
         [HttpGet]
-        public IActionResult Add(int userId)
+        public IActionResult Add()
             => View(new Goal
             {
-                UserId = userId, 
+                UserId = _userRepository.GetLoggedInUserId(), 
                 StartDate = DateTime.Now.Date
             });
         [HttpPost]
@@ -40,9 +43,9 @@ namespace MSSA.Canvas_Your_Goals.Controllers
 
 
         //// Read
-        public IActionResult Index(int userId, int goalPage = 1)
+        public IActionResult Index(int goalPage = 1)
         {
-            IQueryable<Goal> allGoals = _repository.GetAllGoals();
+            IQueryable<Goal> allGoals = _repository.GetAllGoals(_userRepository.GetLoggedInUserId());
             //- IQueryable<Goal> someGoals = allGoals
             //-     .OrderBy(goal => goal.GoalId)
             //-     .Skip((goalPage - 1) * _pageSize)
@@ -68,7 +71,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
             {
                 return View(goal);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "User");
         } // Details method ends
 
 
@@ -81,7 +84,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
             {
                 return View(goal);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "User");
         } // Edit HttpGet method ends
         [HttpPost]
         public IActionResult Edit(Goal goal)
@@ -108,13 +111,13 @@ namespace MSSA.Canvas_Your_Goals.Controllers
             {
                 return View(goal);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "User");
         } // Delete HttpGet method ends
         [HttpPost]
         public IActionResult Delete(Goal goal)
         {
             _repository.DeleteGoal(goal);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Goal");
         } // Delete HttpPost method ends
     } // class ends
 } // namespace ends

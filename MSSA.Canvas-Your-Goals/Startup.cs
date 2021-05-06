@@ -34,10 +34,12 @@ namespace MSSA.Canvas_Your_Goals
             services.AddScoped<IUserRepository, EfUserRepository>();
             services.AddScoped<IGoalRepository, EfGoalRepository>();
             services.AddScoped<ITaskRepository, EfTaskRepository>();
+            services.AddScoped<IStepRepository, EfStepRepository>();
             services.AddScoped<IVisionBoardRepository, EfVisionBoardRepository>();
             services.AddControllersWithViews();
             services.AddRazorPages();
-            //- services.AddMemoryCache();
+            services.AddHttpContextAccessor();
+            services.AddMemoryCache();
             services.AddDistributedMemoryCache();
             services.AddSession(
                 //- options =>

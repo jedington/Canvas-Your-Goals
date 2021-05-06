@@ -4,17 +4,16 @@
     ViewData["Title"] = "Login";
 }
 
-<header> <partial name="LoggedOutNav" /> </header>
-<h3 class="bg-primary text-white m-2 p-2"> @ViewData["Title"] </h3>
+<h3 class="bg-dark text-white m-2 p-2"> @ViewData["Title"] </h3>
 <div asp-validation-summary="All"></div>
-<form asp-controller="User" asp-action="Login" method="post">
+<form method="post">
     <table class="centered table-sm bg-transparent">
         <tr>
             <th asp-for="Email">
                 Email:
             </th>
             <td>
-                <input asp-for="Email" type="email" class="form-control" placeholder="Input your Email" />
+                <input asp-for="Email" type="email" class="form-control" placeholder="Input your Email" required />
             </td>
         </tr>
         <tr>
@@ -22,7 +21,7 @@
                 Password:
             </th>
             <td>
-                <input asp-for="Password" type="password" class="form-control" placeholder="Input your Password" />
+                <input asp-for="Password" type="password" class="form-control" placeholder="Input your Password" required />
             </td>
         </tr>
         <tr>

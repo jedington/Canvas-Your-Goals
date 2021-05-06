@@ -9,14 +9,34 @@ namespace MSSA.Canvas_Your_Goals.Models
 
 
         // read
+        public IQueryable<User> GetAllUsers();
+
+        public User GetUserByEmail(string email);
+
         public User GetUserById(int userId);
+
+        public bool Login(User user);
+
+        public void Logout();
+
+        public bool IsUserLoggedIn();
+
+        public int GetLoggedInUserId();
+
+        public string GetLoggedInEmail();
 
 
         // update
         public User UpdateUser(User user);
 
+        public bool ChangePassword(string oldPassword, string newPassword);
+
+        public bool ResetPassword(string email, string newPassword);
+
 
         // delete
         public bool DeleteUser(int userId);
+
+        public bool DeleteUser(User user);
     } // class ends
 } // namespace ends

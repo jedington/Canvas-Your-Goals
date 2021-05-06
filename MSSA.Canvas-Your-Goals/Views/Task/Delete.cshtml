@@ -4,7 +4,6 @@
     ViewData["Title"] = "Delete Task";
 }
 
-<header> <partial name="LoggedInNav" /> </header>
 <fieldset class="shadow centered">
     <legend> @ViewData["Title"] </legend>
     <table class="table-bordered table-striped table-sm">
@@ -42,7 +41,7 @@
                         <input type="hidden" asp-for="TaskId" />
                         <input type="submit" value="Delete" class="btn btn-danger ml-1 mr-1" />
                         @*
-                            <button class="btn btn-danger ml-1 mr-1" asp-controller="Task" asp-action="DeleteAction" asp-route-taskId="@Model.TaskId">
+                            <button class="btn btn-danger ml-1 mr-1" asp-controller="Task" asp-action="Delete" asp-route-taskId="@Model.TaskId">
                                 Delete
                             </button>
                         *@
