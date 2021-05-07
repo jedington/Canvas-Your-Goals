@@ -9,15 +9,15 @@ namespace MSSA.Canvas_Your_Goals.Controllers
     {
         // fields
         //- private int _pageSize = 10;
-        private IGoalRepository _repository;
-        private IUserRepository _userRepository;
+        private IGoalRepository _repos;
+        private IUserRepository _userRepos;
 
 
         // constructors
-        public GoalController(IGoalRepository repository, IUserRepository userRepository)
+        public GoalController(IGoalRepository repos, IUserRepository userRepos)
         {
-            _repository = repository;
-            _userRepository = userRepository;
+            _repos = repos;
+            _userRepos = userRepos;
         } // GoalController const ends
 
         
@@ -27,7 +27,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         public IActionResult Add()
             => View(new Goal
             {
-                UserId = _userRepository.GetLoggedInUserId(), 
+                UserId = _userRepos.GetLoggedInUserId(), 
                 StartDate = DateTime.Now.Date
             });
         [HttpPost]
@@ -35,7 +35,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         {
             if (ModelState.IsValid)
             {
-                _repository.CreateGoal(goal);
+                _repos.CreateGoal(goal);
                 return RedirectToAction("Details", new {goalId = goal.GoalId});
             }
             return View(goal);
@@ -45,7 +45,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         //// Read
         public IActionResult Index(int goalPage = 1)
         {
-            IQueryable<Goal> allGoals = _repository.GetAllGoals(_userRepository.GetLoggedInUserId());
+            IQueryable<Goal> allGoals = _repos.GetAllGoals(_userRepos.GetLoggedInUserId());
             //- IQueryable<Goal> someGoals = allGoals
             //-     .OrderBy(goal => goal.GoalId)
             //-     .Skip((goalPage - 1) * _pageSize)
@@ -66,7 +66,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         
         public IActionResult Details(int goalId)
         {
-            Goal goal = _repository.GetGoalById(goalId);
+            Goal goal = _repos.GetGoalById(goalId);
             if (goal != null)
             {
                 return View(goal);
@@ -79,7 +79,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         [HttpGet]
         public IActionResult Edit(int goalId)
         {
-            Goal goal = _repository.GetGoalById(goalId);
+            Goal goal = _repos.GetGoalById(goalId);
             if (goal != null)
             {
                 return View(goal);
@@ -95,7 +95,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
             }
             if (ModelState.IsValid)
             {
-                _repository.UpdateGoal(goal);
+                _repos.UpdateGoal(goal);
                 return RedirectToAction("Details", new {goalId = goal.GoalId});
             }
             return View(goal);
@@ -106,7 +106,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         [HttpGet]
         public IActionResult Delete(int goalId)
         {
-            Goal goal = _repository.GetGoalById(goalId);
+            Goal goal = _repos.GetGoalById(goalId);
             if (goal != null)
             {
                 return View(goal);
@@ -116,7 +116,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         [HttpPost]
         public IActionResult Delete(Goal goal)
         {
-            _repository.DeleteGoal(goal);
+            _repos.DeleteGoal(goal);
             return RedirectToAction("Index", "Goal");
         } // Delete HttpPost method ends
     } // class ends

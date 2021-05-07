@@ -7,12 +7,12 @@ namespace MSSA.Canvas_Your_Goals.Controllers
     public class StepController : Controller
     {
         // fields
-        private IStepRepository _repository;
+        private IStepRepository _repos;
 
 
         // constructors
         public StepController(IStepRepository repository)
-            => _repository = repository;
+            => _repos = repository;
         // StepController const ends
 
 
@@ -30,7 +30,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         {
             if (ModelState.IsValid)
             {
-                _repository.CreateStep(step);
+                _repos.CreateStep(step);
                 return RedirectToAction("Details", new {stepId = step.StepId});
             }
             return View(step);
@@ -40,7 +40,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         //// Read
         public IActionResult Details(int stepId)
         {
-            Step step = _repository.GetStepById(stepId);
+            Step step = _repos.GetStepById(stepId);
             if (step != null)
             {
                 return View(step);
@@ -53,7 +53,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         [HttpGet]
         public IActionResult Edit(int stepId)
         {
-            Step step = _repository.GetStepById(stepId);
+            Step step = _repos.GetStepById(stepId);
             if (step != null)
             {
                 return View(step);
@@ -69,7 +69,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
             }
             if (ModelState.IsValid)
             {
-                _repository.UpdateStep(step);
+                _repos.UpdateStep(step);
                 return RedirectToAction("Details", new {stepId = step.StepId});
             }
             return View(step);
@@ -80,7 +80,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         [HttpGet]
         public IActionResult Delete(int stepId)
         {
-            Step step = _repository.GetStepById(stepId);
+            Step step = _repos.GetStepById(stepId);
             if (step != null)
             {
                 return View(step);
@@ -90,7 +90,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         [HttpPost]
         public IActionResult Delete(Step step)
         {
-            _repository.DeleteStep(step);
+            _repos.DeleteStep(step);
             return RedirectToAction("Index", "Goal");
         } // Delete HttpPost method ends
     } // class ends

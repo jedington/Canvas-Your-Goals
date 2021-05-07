@@ -115,14 +115,14 @@ namespace MSSA.Canvas_Your_Goals.Models
             return userToUpdate;
         } // UpdateUser method ends
 
-        public bool ChangePassword(string oldPassword, string newPassword)
+        public bool ChangePassword(string currentPassword, string newPassword)
         {
             if (!IsUserLoggedIn())
             {
                 return false;
             }
             User userToUpdate = GetUserById(GetLoggedInUserId());
-            if (userToUpdate != null && userToUpdate.Password == oldPassword)
+            if (userToUpdate != null && userToUpdate.Password == EncryptPassword(currentPassword))
             {
                 userToUpdate.Password = EncryptPassword(newPassword);
                 _context.SaveChanges();

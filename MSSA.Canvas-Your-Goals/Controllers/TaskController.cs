@@ -7,12 +7,12 @@ namespace MSSA.Canvas_Your_Goals.Controllers
     public class TaskController : Controller
     {
         // fields
-        private ITaskRepository _repository;
+        private ITaskRepository _repos;
 
 
         // constructors
         public TaskController(ITaskRepository repository)
-            => _repository = repository;
+            => _repos = repository;
         // TaskController const ends
 
 
@@ -30,7 +30,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         {
             if (ModelState.IsValid)
             {
-                _repository.CreateTask(task);
+                _repos.CreateTask(task);
                 return RedirectToAction("Details", new {taskId = task.TaskId});
             }
             return View(task);
@@ -40,7 +40,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         //// Read
         public IActionResult Details(int taskId)
         {
-            Task task = _repository.GetTaskById(taskId);
+            Task task = _repos.GetTaskById(taskId);
             if (task != null)
             {
                 return View(task);
@@ -53,7 +53,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         [HttpGet]
         public IActionResult Edit(int taskId)
         {
-            Task task = _repository.GetTaskById(taskId);
+            Task task = _repos.GetTaskById(taskId);
             if (task != null)
             {
                 return View(task);
@@ -69,7 +69,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
             }
             if (ModelState.IsValid)
             {
-                _repository.UpdateTask(task);
+                _repos.UpdateTask(task);
                 return RedirectToAction("Details", new {taskId = task.TaskId});
             }
             return View(task);
@@ -80,7 +80,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         [HttpGet]
         public IActionResult Delete(int taskId)
         {
-            Task task = _repository.GetTaskById(taskId);
+            Task task = _repos.GetTaskById(taskId);
             if (task != null)
             {
                 return View(task);
@@ -90,7 +90,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         [HttpPost]
         public IActionResult Delete(Task task)
         {
-            _repository.DeleteTask(task);
+            _repos.DeleteTask(task);
             return RedirectToAction("Index", "Goal");
         } // Delete HttpPost method ends
     } // class ends

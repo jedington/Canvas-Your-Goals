@@ -29,7 +29,7 @@ namespace MSSA.Canvas_Your_Goals.Models
         // update
         public User UpdateUser(User user);
 
-        public bool ChangePassword(string oldPassword, string newPassword);
+        public bool ChangePassword(string currentPassword, string newPassword);
 
         public bool ResetPassword(string email, string newPassword);
 
