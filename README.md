@@ -42,11 +42,10 @@
     An MSSA 18-week project + continued afterwards (because why not)
     <br />
     <br /> 
-    <!--
-    <a href="http://jedington.github.io/Canvas-Your-Goals/docs/Canvas-Your-Goals-Wireframe.pdf">View Demo</a>
-    · -->
+    <a href="https://visionboardjedington.azurewebsites.net/">View Demo</a>
+	·
     <a href="https://github.com/jedington/Canvas-Your-Goals/blob/master/docs/Canvas-Your-Goals-Wireframe.pdf">Wireframe</a>
-    ·
+	·
     <a href="https://github.com/jedington/Canvas-Your-Goals/issues">Report Bug(s) // Request Feature(s)</a>
   </p>
 </p>
