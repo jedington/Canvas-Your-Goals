@@ -43,8 +43,9 @@
     <br />
     <br /> 
     <a href="https://visionboardjedington.azurewebsites.net/">View Demo</a>
+	·
     <a href="https://github.com/jedington/Canvas-Your-Goals/blob/master/docs/Canvas-Your-Goals-Wireframe.pdf">Wireframe</a>
-    ·
+	·
     <a href="https://github.com/jedington/Canvas-Your-Goals/issues">Report Bug(s) // Request Feature(s)</a>
   </p>
 </p>
