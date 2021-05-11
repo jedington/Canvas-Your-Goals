@@ -9,7 +9,7 @@ namespace MSSA.Canvas_Your_Goals.Models
     {
         [HiddenInput(DisplayValue = false)]
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int? VisionBoardId { get; set; }
+        public int VisionBoardId { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         [ForeignKey(nameof(User.UserId))]
