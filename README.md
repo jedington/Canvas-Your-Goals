@@ -92,7 +92,7 @@ We all have goals that are originally ideas we want to accomplish at some point.
 ------
 ### To-Do List
 
-The first part of the project is a list of tasks that need to be accomplished in order to attain the certain goals. These goals will be on a separate page from the custom page, or vision board. The user should be allowed to create their own separate goals, the tasks under goals, and subtasks—if necessary, dependent on complexity—in order to achieve said goals. This part of the project should be much simpler than the first to implement from a developer perspective. Still, this previous statement does not mean it will be easy either.
+The first part of the project is a list of tasks that need to be accomplished in order to attain the certain goals. These goals will be on a separate page from the custom page, or vision board. The user should be allowed to create their own separate goals, the tasks under goals, and steps--if necessary--dependent on complexity—in order to achieve said goals. This part of the project should be much simpler than the first to implement from a developer perspective, but this does not mean it will be easy either.
 
 ------
 ### Vision Board
@@ -113,7 +113,7 @@ Listing out the types of objects and sections of the website to be CRUD complian
 2.	Secondary Webpages / To-Do List -- these are being worked on first and will be fairly easy to complete before this year is over.
 	  + Simple design, probably like a timeline, and flexible on days, weeks, etc.
 	  +	Tasks: list out the details or milestones of certain goals, with each goal having their own tasks to be kept track of & completed. Tasks that have been completed can be crossed-out and changed to green; tasks that are reaching a close deadline to be changed to yellow. Tasks that have been failed to be changed to red, with the option to add more after to make up for the failed task, such as retaking a certification test.
-	  +	Subtasks: to be used if necessary, with the same capabilities as tasks.
+	  +	Steps: to be used if necessary, with the same capabilities as tasks.
  
 ------
 ### Accounts
