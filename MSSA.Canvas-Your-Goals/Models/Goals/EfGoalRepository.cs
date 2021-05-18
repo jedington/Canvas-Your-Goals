@@ -80,6 +80,7 @@ namespace MSSA.Canvas_Your_Goals.Models
                 goalToUpdate.Type = goal.Type;
                 goalToUpdate.StartDate = goal.StartDate;
                 goalToUpdate.EndDate = goal.EndDate;
+                goalToUpdate.Details = goal.Details;
                 _context.SaveChanges();
             }
             return goalToUpdate;
