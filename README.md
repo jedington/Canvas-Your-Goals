@@ -97,24 +97,24 @@ The first part of the project is a list of tasks that need to be accomplished in
 ------
 ### Vision Board
 
-The second--and much more difficult--feature of the project will have a customizable webpage, intended emulate a vision board’s features of something pleasant and inspiring to look at. Many vision board applications have the capability to add images, objects and shapes, as well as text inputs, with the addition of being able to move and adjust the size of them wherever on the page. Like many goals, you have to be realistic, and this part of the project might be too complicated at the moment for me to fully develop in the next few months. With that in mind, I am fully aware that I may have to settle with some of the vision board features to be simpler than most (examples: <a href="#references">References :paperclip:</a>).
+The second--and much more difficult--feature of the project will have a customizable webpage, intended emulate a vision board’s features of something pleasant and inspiring to look at. Many vision board applications have the capability to add images, objects and shapes, as well as text inputs, with the addition of being able to move and adjust the size of them wherever on the page. Like many goals, you have to be realistic, and this part of the project might be too complicated at the moment for me to develop in the next few months. With that in mind, I am fully aware that I may have to settle with some of the vision board features to be simpler than most, or even not released (examples: <a href="#references">References :paperclip:</a>).
 
 ------
 ### Functions
 
 Listing out the types of objects and sections of the website to be CRUD compliant:
-1.	Home Webpage / Vision Board -- realistically, this will be accomplished last, since it's the most difficult.
+1.	Secondary Webpages / To-Do List -- these are being worked on first and will be fairly easy to complete before this year is over.
+	  + Simple design, probably like a timeline, and flexible on days, weeks, etc.
+	  +	Tasks: list out the details or milestones of certain goals, with each goal having their own tasks to be kept track of & completed. Tasks that have been completed can be crossed-out and changed to green; tasks that are reaching a close deadline to be changed to yellow. Tasks that have been failed to be changed to red, with the option to add more after to make up for the failed task, such as retaking a certification test.
+	  +	Steps: to be used if necessary, with the same capabilities as tasks.
+2.	Home Webpage / Vision Board -- realistically, this will be accomplished last, since it's the most difficult.
 	  +	Editing UI: give capabilities for all the of the below objects.
 	  +	Page: adjustable size, background color.
 	  +	Title: adjustable size, position, color.
 	  +	Additional text: adjustable size, position, color.
 	  +	Images: adjustable size, position, opacity, background.
 	  +	Objects: lines, shapes, outsourced, etc (uncertain, but will try anyways).
-2.	Secondary Webpages / To-Do List -- these are being worked on first and will be fairly easy to complete before this year is over.
-	  + Simple design, probably like a timeline, and flexible on days, weeks, etc.
-	  +	Tasks: list out the details or milestones of certain goals, with each goal having their own tasks to be kept track of & completed. Tasks that have been completed can be crossed-out and changed to green; tasks that are reaching a close deadline to be changed to yellow. Tasks that have been failed to be changed to red, with the option to add more after to make up for the failed task, such as retaking a certification test.
-	  +	Steps: to be used if necessary, with the same capabilities as tasks.
- 
+
 ------
 ### Accounts
 
