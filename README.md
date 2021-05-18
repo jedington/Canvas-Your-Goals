@@ -60,8 +60,8 @@
       <a href="#about-the-project">About The Project</a>
       <ul>
 	<li><a href="#summary">➪ Summary :hourglass_flowing_sand:</a></li>
-	<li><a href="#vision-board">➪ Vision Board :sunrise:</a></li>
 	<li><a href="#to-do-list">➪ To-Do List :memo:</a></li>
+	<li><a href="#vision-board">➪ Vision Board :sunrise:</a></li>
 	<li><a href="#functions">➪ Functions :cookie:</a></li>
 	<li><a href="#accounts">➪ Accounts :closed_lock_with_key:</a></li>
 	<li><a href="#compatibility">➪ Compatibility :computer:</a></li>
@@ -85,36 +85,36 @@
 
 ### Summary
 
-We all have goals that are originally ideas we want to accomplish at some point. Most of the time, they are simple tasks in order to get through the day, week, or however long the span is; but sometimes they are not simple, and our goals reach high and far. Sometimes they seem too out of reach to just quantify in order to succeed in them. We come up with dreams that we strive for; some may use tools like vision boards and create milestones along the way towards our goals. This project is not going to be particularly different or groundbreaking, rather just another rendition of a vision board, reimagined with a to-do list style structure included alongside for each individual goal.
+We all have goals that are originally ideas we want to accomplish at some point. Most of the time, they are simple tasks in order to get through the day, week, or however long the span is; but sometimes they are not simple, and our goals reach high and far. Sometimes they seem too out of reach to just quantify in order to succeed in them. We come up with dreams that we strive for. Some may use tools like vision boards and create milestones along the way towards their goals. This project is not going to be particularly different or groundbreaking, rather just another rendition of a vision board, reimagined with a to-do list style structure included alongside for each individual goal.
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
 ------
-### Vision Board
-
-To start with, the first feature of the project will have a customizable webpage, intended emulate a vision board’s features of something pleasant and inspiring to look at. Many vision board applications have the capability to add images, objects and shapes, as well as text inputs, with the addition of being able to move and adjust the size of them wherever on the page. Like many goals, you have to be realistic, and this part of the project might be too complicated at the moment for me to fully develop in the next few months. With that in mind, I am fully aware that I may have to settle with some of the vision board features to be simpler than most (examples: <a href="#references">References :paperclip:</a>).
-
-------
 ### To-Do List
 
-The second part of the project is a list of tasks that need to be accomplished in order to attain the certain goals. These goals will be on a separate page from the custom page, or vision board. The user should be allowed to create their own separate goals, the tasks under goals, and subtasks—if necessary, dependent on complexity—in order to achieve said goals. This part of the project should be much simpler than the first to implement from a developer perspective. Still, this previous statement does not mean it will be easy either.
+The first part of the project is a list of tasks that need to be accomplished in order to attain the certain goals. These goals will be on a separate page from the custom page, or vision board. The user should be allowed to create their own separate goals, the tasks under goals, and steps--if necessary--dependent on complexity—in order to achieve said goals. This part of the project should be much simpler than the first to implement from a developer perspective, but this does not mean it will be easy either.
+
+------
+### Vision Board
+
+The second--and much more difficult--feature of the project will have a customizable webpage, intended emulate a vision board’s features of something pleasant and inspiring to look at. Many vision board applications have the capability to add images, objects and shapes, as well as text inputs, with the addition of being able to move and adjust the size of them wherever on the page. Like many goals, you have to be realistic, and this part of the project might be too complicated at the moment for me to develop in the next few months. With that in mind, I am fully aware that I may have to settle with some of the vision board features to be simpler than most, or even not released (examples: <a href="#references">References :paperclip:</a>).
 
 ------
 ### Functions
 
 Listing out the types of objects and sections of the website to be CRUD compliant:
-1.	Home Webpage / Vision Board -- realistically, this will be accomplished last, since it's the most difficult.
+1.	Secondary Webpages / To-Do List -- these are being worked on first and will be fairly easy to complete before this year is over.
+	  + Simple design, probably like a timeline, and flexible on days, weeks, etc.
+	  +	Tasks: list out the details or milestones of certain goals, with each goal having their own tasks to be kept track of & completed. Tasks that have been completed can be crossed-out and changed to green; tasks that are reaching a close deadline to be changed to yellow. Tasks that have been failed to be changed to red, with the option to add more after to make up for the failed task, such as retaking a certification test.
+	  +	Steps: to be used if necessary, with the same capabilities as tasks.
+2.	Home Webpage / Vision Board -- realistically, this will be accomplished last, since it's the most difficult.
 	  +	Editing UI: give capabilities for all the of the below objects.
 	  +	Page: adjustable size, background color.
 	  +	Title: adjustable size, position, color.
 	  +	Additional text: adjustable size, position, color.
 	  +	Images: adjustable size, position, opacity, background.
 	  +	Objects: lines, shapes, outsourced, etc (uncertain, but will try anyways).
-2.	Secondary Webpages / To-Do List -- these are being worked on first and will be fairly easy to complete before this year is over.
-	  + Simple design, probably like a timeline, and flexible on days, weeks, etc.
-	  +	Tasks: list out the details or milestones of certain goals, with each goal having their own tasks to be kept track of & completed. Tasks that have been completed can be crossed-out and changed to green; tasks that are reaching a close deadline to be changed to yellow. Tasks that have been failed to be changed to red, with the option to add more after to make up for the failed task, such as retaking a certification test.
-	  +	Subtasks: to be used if necessary, with the same capabilities as tasks.
- 
+
 ------
 ### Accounts
 
@@ -166,7 +166,6 @@ Project is just barely starting. Listing out both things that are 'to-do' as wel
 7. Final (necessary) step figure out the Vision Board setup ☐.
 8. Modal page 'popups' through Bootstrap. ☐ (optional)
 9. OAuth potentially for easier login / SSO. ☐ (optional)
-10. Eventually use/migrate to WordPress? ☐ (optional)
 
 *See the [open issues](https://github.com/jedington/Canvas-Your-Goals/issues) for a list of proposed features (and known issues).*
 
