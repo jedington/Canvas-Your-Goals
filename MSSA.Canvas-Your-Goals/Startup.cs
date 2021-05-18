@@ -20,7 +20,7 @@ namespace MSSA.Canvas_Your_Goals
             Configuration = configuration;
         }
 
-        
+
         // methods
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -68,7 +68,6 @@ namespace MSSA.Canvas_Your_Goals
             app.UseRouting();
             app.UseSession();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 //- endpoints.MapControllerRoute(

@@ -45,7 +45,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         //// Read
         public IActionResult Index(int goalPage = 1)
         {
-            IQueryable<Goal> allGoals = _repos.GetAllGoals(_userRepos.GetLoggedInUserId());
+            IQueryable<Goal> allGoals = _repos.GetAllGoals();
             //- IQueryable<Goal> someGoals = allGoals
             //-     .OrderBy(goal => goal.GoalId)
             //-     .Skip((goalPage - 1) * _pageSize)

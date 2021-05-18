@@ -113,7 +113,7 @@ namespace MSSA.Canvas_Your_Goals.Controllers
             User user = _repos.GetUserById(_repos.GetLoggedInUserId());
             if (user != null)
             {
-                View();
+                return View();
             }
             return RedirectToAction("Login");
         } // ChangePassword HttpGet method ends
