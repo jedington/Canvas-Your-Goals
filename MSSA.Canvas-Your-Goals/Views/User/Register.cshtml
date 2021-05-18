@@ -5,15 +5,24 @@
 }
 
 <h3 class="bg-dark text-white m-2 p-2"> @ViewData["Title"] </h3>
-<div asp-validation-summary="All"></div>
 <form method="post">
     <table class="centered table-sm bg-transparent">
+        @if (ViewData.ModelState.ErrorCount > 0)
+        {
+            <thead>
+            <tr>
+                <td colspan="2">
+                    <div asp-validation-summary="All"> </div>
+                </td>
+            </tr>
+            </thead>
+        }
         <tr>
             <th>
                 Email:
             </th>
             <td>
-                <input asp-for="Email" type="email" class="form-control" placeholder="Input your Email" required />
+                <input asp-for="Email" type="email" class="form-control" placeholder="Input your Email" required/>
             </td>
         </tr>
         <tr>
@@ -21,7 +30,7 @@
                 Password:
             </th>
             <td>
-                <input asp-for="Password" type="password" class="form-control" placeholder="Input Password" required />
+                <input asp-for="Password" type="password" class="form-control" placeholder="Input Password" required/>
             </td>
         </tr>
         <tr>
@@ -29,7 +38,7 @@
                 Confirm Password:
             </th>
             <td>
-                <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm..." required />
+                <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm..." required/>
             </td>
         </tr>
         <tr>
@@ -37,7 +46,7 @@
                 Security Hint:
             </th>
             <td>
-                <input asp-for="SecurityHint" type="text" class="form-control" placeholder="Unique Question..." required />
+                <input asp-for="SecurityHint" type="text" class="form-control" placeholder="Unique Question..." required/>
             </td>
         </tr>
         <tr>
@@ -45,12 +54,12 @@
                 Security Answer:
             </th>
             <td>
-                <input asp-for="SecurityAnswer" type="text" class="form-control" placeholder="Unique Answer..." required />
+                <input asp-for="SecurityAnswer" type="text" class="form-control" placeholder="Unique Answer..." required/>
             </td>
         </tr>
         <tr>
             <td class="text-center" colspan="2">
-                <input class="btn btn-primary ml-1 mr-1" type="submit" value="Register!" />
+                <input class="btn btn-primary ml-1 mr-1" type="submit" value="Register!"/>
             </td>
         </tr>
     </table>
