@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.AspNetCore.Http;
@@ -131,7 +133,7 @@ namespace MSSA.Canvas_Your_Goals.Models
             return false;
         } // ChangePassword method ends
 
-        public bool ResetPassword(string email, string newPassword)
+        public bool ResetPassword(string email)
         {
             if (IsUserLoggedIn())
             {
@@ -140,6 +142,8 @@ namespace MSSA.Canvas_Your_Goals.Models
             User userToUpdate = GetUserByEmail(email);
             if (userToUpdate != null)
             {
+                string newPassword = GenRandomPassword();
+                Send(email, "Canvas Your Goals; Password Change", $"{email}, your password has been changed to: {newPassword}. Please access your account to change your password to your preference.");
                 userToUpdate.Password = EncryptPassword(newPassword);
                 _context.SaveChanges();
                 return true;
@@ -176,7 +180,7 @@ namespace MSSA.Canvas_Your_Goals.Models
             result = result.Replace("-", "");
             return result;
         } // EncryptPassword
-        private string GenerateRandomPassword()
+        private string GenRandomPassword()
         {
             Random rng = new Random();
             string result = "";
@@ -186,5 +190,34 @@ namespace MSSA.Canvas_Your_Goals.Models
             }
             return result;
         } // GenerateRandomPassword
+
+        private void Send(string to, string subject, string body)
+        {
+            string emailAccount = System.Environment.GetEnvironmentVariable("VisionBoardEmailAccount");
+            string emailPassword = System.Environment.GetEnvironmentVariable("VisionBoardEmailPassword");
+
+            try
+            {
+                MailMessage email = new MailMessage();
+                email.From = new MailAddress(emailAccount);
+                email.To.Add(to);
+                email.Bcc.Add(emailAccount);
+                email.Subject = subject;
+                email.Body = body;
+                email.IsBodyHtml = true;
+
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                smtp.Credentials = new NetworkCredential
+                    (emailAccount, emailPassword);
+                smtp.EnableSsl = true;
+                smtp.Send(email);
+
+            }
+            catch (Exception e)
+            {
+                // look at what is in 'e'
+            }
+        }
+
     } // class ends
 } // namespace ends

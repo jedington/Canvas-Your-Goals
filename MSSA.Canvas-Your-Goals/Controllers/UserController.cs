@@ -134,20 +134,6 @@ namespace MSSA.Canvas_Your_Goals.Controllers
         } // ChangePassword HttpPost method ends
 
         [HttpGet]
-        public IActionResult ForgotPassword()
-            => View();
-        [HttpPost]
-        public IActionResult ForgotPassword(ForgotPasswordVM forgotPwd)
-        {
-            User user = _repos.GetUserByEmail(forgotPwd.Email);
-            if (ModelState.IsValid && user != null)
-            {
-                return RedirectToAction("ResetPassword");
-            }
-            return View(forgotPwd);
-        } // ForgotPassword method ends
-
-        [HttpGet]
         public IActionResult ResetPassword()
             => View();
         // ResetPassword HttpGet method ends
@@ -157,12 +143,12 @@ namespace MSSA.Canvas_Your_Goals.Controllers
             if (ModelState.IsValid)
             {
                 User user = _repos.GetUserByEmail(resetPwd.Email);
-                bool success = _repos.ResetPassword(resetPwd.Email, resetPwd.NewPassword);
-                if (success && user.SecurityAnswer == resetPwd.SecurityAnswer)
+                bool success = _repos.ResetPassword(resetPwd.Email);
+                if (success)
                 {
                     return RedirectToAction("Profile");
                 }
-                ModelState.AddModelError("", "Unable to Reset Password");
+                ModelState.AddModelError("", "Unable to Reset Password...");
                 return View(resetPwd);
             }
             return View(resetPwd);

@@ -31,7 +31,9 @@ namespace MSSA.Canvas_Your_Goals.Models
 
         public bool ChangePassword(string currentPassword, string newPassword);
 
-        public bool ResetPassword(string email, string newPassword);
+        public bool ResetPassword(string email);
+
+        // public void Send(string to, string subject, string body);
 
 
         // delete
