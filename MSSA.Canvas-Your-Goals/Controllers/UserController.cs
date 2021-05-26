@@ -29,8 +29,6 @@ namespace MSSA.Canvas_Your_Goals.Controllers
                 user.IsAdmin = false;
                 user.Email = userReg.Email;
                 user.Password = userReg.Password;
-                user.SecurityHint = userReg.SecurityHint;
-                user.SecurityAnswer = userReg.SecurityAnswer;
                 User newUser = _repos.CreateUser(user);
                 if (newUser == null)
                 {
