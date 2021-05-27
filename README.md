@@ -158,14 +158,29 @@ Idea will be to get this application usable in a way that anyone can make their 
 
 Project is just barely starting. Listing out both things that are 'to-do' as well as potential ideas.
 
-1. Database create with T-SQL / SSMS. 🗹
-2. Three theme colors through JavaScript. 🗹
-3. Collaborate database, backend, frontend. 🗹
-4. Manage basic authentication / authorization. 🗹
+Completed:
+1. Database (SQL Server). 🗹
+2. Migrate Database to Azure. 🗹
+3. To-Do List: Goal/Task/Step (MVC). 🗹
+4. User (MVC) and Email for Password Reset. 🗹
+5. Manage basic authentication / authorization. 🗹
 6. Complete project's basic functions to release. 🗹
-7. Final (necessary) step figure out the Vision Board setup ☐.
-8. Modal page 'popups' through Bootstrap. ☐ (optional)
-9. OAuth potentially for easier login / SSO. ☐ (optional)
+	
+Backlog:
+1. Figure out Vision Board (MVC+JS) configuration. ☐
+2. Info/Notifications when navigating webpages. ☐
+3. Add functions to auto-complete Goals/Tasks. ☐
+4. Enable Pagination / allow for many pages. ☐
+5. Browser and Device Compatibility where feasible. ☐
+	
+Optional:
+1. Custom front-end design. 🗹
+2. Theme colors through JavaScript. 🗹
+3. Potentially add in a Calendar (MVC)? ☐
+4. Modal page 'popups' through Bootstrap. ☐ 
+5. OAuth potentially for easier login / SSO. ☐ 
+6. Accelerated Mobile Pages / Mobile App?. ☐
+7. Terms & Conditions + Privacy Policy. ☐
 
 *See the [open issues](https://github.com/jedington/Canvas-Your-Goals/issues) for a list of proposed features (and known issues).*
 
