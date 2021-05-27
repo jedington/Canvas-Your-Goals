@@ -156,8 +156,6 @@ Idea will be to get this application usable in a way that anyone can make their 
 <!-- ROADMAP -->
 ## Roadmap
 
-Project is just barely starting. Listing out both things that are 'to-do' as well as potential ideas.
-
 Completed:
 1. Database (SQL Server). 🗹
 2. Migrate Database to Azure. 🗹
