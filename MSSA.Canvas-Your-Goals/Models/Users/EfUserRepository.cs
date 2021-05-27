@@ -143,7 +143,7 @@ namespace MSSA.Canvas_Your_Goals.Models
             if (userToUpdate != null)
             {
                 string newPassword = GenRandomPassword();
-                Send(email, "Canvas Your Goals; Password Change", $"{email}, your password has been changed to: {newPassword}. Please access your account to change your password to your preference.");
+                Send(email, "Canvas Your Goals; Password Change", $"{email}, \n\n Your password has been changed to: {newPassword}. \n Please access your account to change your password to your preference. \n\n Respectfully,\n Julian");
                 userToUpdate.Password = EncryptPassword(newPassword);
                 _context.SaveChanges();
                 return true;
@@ -193,31 +193,27 @@ namespace MSSA.Canvas_Your_Goals.Models
 
         private void Send(string to, string subject, string body)
         {
-            string emailAccount = System.Environment.GetEnvironmentVariable("VisionBoardEmailAccount");
-            string emailPassword = System.Environment.GetEnvironmentVariable("VisionBoardEmailPassword");
+            string act = System.Environment.GetEnvironmentVariable("VisionBoardEmailAccount");
+            string pwd = System.Environment.GetEnvironmentVariable("VisionBoardEmailPassword");
 
-            try
-            {
-                MailMessage email = new MailMessage();
-                email.From = new MailAddress(emailAccount);
-                email.To.Add(to);
-                email.Bcc.Add(emailAccount);
-                email.Subject = subject;
-                email.Body = body;
-                email.IsBodyHtml = true;
+            MailMessage email = new MailMessage();
+            email.From = new MailAddress(act);
+            email.To.Add(to);
+            //- email.Bcc.Add(emailAccount);
+            email.Subject = subject;
+            email.Body = body;
+            email.IsBodyHtml = true;
 
-                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-                smtp.Credentials = new NetworkCredential
-                    (emailAccount, emailPassword);
-                smtp.EnableSsl = true;
-                smtp.Send(email);
-
-            }
-            catch (Exception e)
-            {
-                // look at what is in 'e'
-            }
-        }
-
+            SmtpClient smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(act, pwd)
+                };
+            smtp.Send(email);
+        } // Send method ends
     } // class ends
 } // namespace ends

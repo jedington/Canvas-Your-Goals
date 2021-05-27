@@ -33,7 +33,7 @@ namespace MSSA.Canvas_Your_Goals.Models
 
         public bool ResetPassword(string email);
 
-        // public void Send(string to, string subject, string body);
+        //- public void Send(string to, string subject, string body);
 
 
         // delete
