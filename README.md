@@ -196,7 +196,7 @@ Feel free to fork it along the way and give input if you want though! I fully su
 <!-- CONTACT -->
 ## Contact
 
-Twitter: [@julianedington](https://twitter.com/julianedington) • LinkedIn: [julian-edington](https://www.linkedin.com/in/julian-edington/)
+Twitter: [@arcanicvoid](https://twitter.com/arcanicvoid) • LinkedIn: [julian-edington](https://www.linkedin.com/in/julian-edington/)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
