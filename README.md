@@ -108,11 +108,11 @@ Optional:
 
 <!-- ABOUT THE PROJECT -->
 <details open="open">
-  <summary><h2 style="display: inline-block">About The Project</h2></summary>
+  <summary><h2 style="display: inline-block">About The Project</h2>
 	
-## Summary
+### Summary
 
-We all have goals that are originally ideas we want to accomplish at some point. Most of the time, they are simple tasks in order to get through the day, week, or however long the span is; but sometimes they are not simple, and our goals reach high and far. Sometimes they seem too out of reach to just quantify in order to succeed in them. We come up with dreams that we strive for. Some may use tools like vision boards and create milestones along the way towards their goals. This project is not going to be particularly different or groundbreaking, rather just another rendition of a vision board, reimagined with a to-do list style structure included alongside for each individual goal.
+We all have goals that are originally ideas we want to accomplish at some point. Most of the time, they are simple tasks in order to get through the day, week, or however long the span is; but sometimes they are not simple, and our goals reach high and far. Sometimes they seem too out of reach to just quantify in order to succeed in them. We come up with dreams that we strive for. Some may use tools like vision boards and create milestones along the way towards their goals. This project is not going to be particularly different or groundbreaking, rather just another rendition of a vision board, reimagined with a to-do list style structure included alongside for each individual goal.</summary>
 
 
 ------
