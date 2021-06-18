@@ -100,7 +100,7 @@ Optional:
 3. Potentially add in a Calendar (MVC)? ☐
 4. Modal page 'popups' through Bootstrap. ☐ 
 5. OAuth potentially for easier login / SSO. ☐ 
-6. Accelerated Mobile Pages / Mobile App?. ☐
+6. Accelerated Mobile Pages / Mobile App? ☐
 7. Terms & Conditions + Privacy Policy. ☐
 
 *See the [open issues](https://github.com/jedington/Canvas-Your-Goals/issues) for a list of proposed features (and known issues).*
@@ -113,7 +113,6 @@ Optional:
 ### Summary
 
 We all have goals that are originally ideas we want to accomplish at some point. Most of the time, they are simple tasks in order to get through the day, week, or however long the span is; but sometimes they are not simple, and our goals reach high and far. Sometimes they seem too out of reach to just quantify in order to succeed in them. We come up with dreams that we strive for. Some may use tools like vision boards and create milestones along the way towards their goals. This project is not going to be particularly different or groundbreaking, rather just another rendition of a vision board, reimagined with a to-do list style structure included alongside for each individual goal.</summary>
-
 
 ------
 ### To-Do List
@@ -150,6 +149,7 @@ The website or application will have register and login capabilities for User ac
 ### Compatibility
 
 I consider this to be an important factor, with as much flexibility as possible. Would be ideal to have compatibility across many browsers as well as various types of devices, depending on the operation systems used as well as the size of the native screens the devices may use. And most importantly, usable from the public cloud / internet regardless of what type of browser or device. Additional systems like caching, script minification, CDNs, and other features would be nice for performance/availability, however reach outside the scope or requirements of this current project.
+</details>
 
 ------
 ## Documents
