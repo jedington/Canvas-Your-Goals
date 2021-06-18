@@ -57,6 +57,7 @@
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
+    <li><a href="#roadmap">Roadmap</a></li>
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
@@ -66,29 +67,53 @@
 	<li><a href="#functions">➪ Functions :cookie:</a></li>
 	<li><a href="#accounts">➪ Accounts :closed_lock_with_key:</a></li>
 	<li><a href="#compatibility">➪ Compatibility :computer:</a></li>
-       	<li><a href="#references">➪ References :paperclip:</a></li>
-	<li><a href="#documents">➪ Documents 📜</a></li>
-	<li><a href="#built-with">➪ Built With 🚧</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#documents">➪ Documents 📜</a></li>
+    <li><a href="#built-with">➪ Built With 🚧</a></li>
+    <li><a href="#references">➪ References :paperclip:</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
+<!-- ROADMAP -->
+## Roadmap
 
+Completed:
+1. Database (SQL Server). 🗹
+2. Migrate Database to Azure. 🗹
+3. To-Do List: Goal/Task/Step (MVC). 🗹
+4. User (MVC) and Email for Password Reset. 🗹
+5. Manage basic authentication / authorization. 🗹
+6. Complete project's basic functions to release. 🗹
+	
+Backlog:
+1. Figure out Vision Board (MVC+JS) configuration. ☐
+2. Info/Notifications when navigating webpages. ☐
+3. Add functions to auto-complete Goals/Tasks. ☐
+4. Enable Pagination / allow for many pages. ☐
+5. Browser and Device Compatibility where feasible. ☐
+	
+Optional:
+1. Custom front-end design. 🗹
+2. Theme colors through JavaScript. 🗹
+3. Potentially add in a Calendar (MVC)? ☐
+4. Modal page 'popups' through Bootstrap. ☐ 
+5. OAuth potentially for easier login / SSO. ☐ 
+6. Accelerated Mobile Pages / Mobile App?. ☐
+7. Terms & Conditions + Privacy Policy. ☐
+
+*See the [open issues](https://github.com/jedington/Canvas-Your-Goals/issues) for a list of proposed features (and known issues).*
+
+
+<!-- ABOUT THE PROJECT -->
 <details open="open">
   <summary><h2 style="display: inline-block">About The Project</h2></summary>
-<!-- ABOUT THE PROJECT -->
-
-### Summary
+	
+## Summary
 
 We all have goals that are originally ideas we want to accomplish at some point. Most of the time, they are simple tasks in order to get through the day, week, or however long the span is; but sometimes they are not simple, and our goals reach high and far. Sometimes they seem too out of reach to just quantify in order to succeed in them. We come up with dreams that we strive for. Some may use tools like vision boards and create milestones along the way towards their goals. This project is not going to be particularly different or groundbreaking, rather just another rendition of a vision board, reimagined with a to-do list style structure included alongside for each individual goal.
 
-<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
 ------
 ### To-Do List
@@ -125,81 +150,27 @@ The website or application will have register and login capabilities for User ac
 ### Compatibility
 
 I consider this to be an important factor, with as much flexibility as possible. Would be ideal to have compatibility across many browsers as well as various types of devices, depending on the operation systems used as well as the size of the native screens the devices may use. And most importantly, usable from the public cloud / internet regardless of what type of browser or device. Additional systems like caching, script minification, CDNs, and other features would be nice for performance/availability, however reach outside the scope or requirements of this current project.
- 
-------
-### References
 
-Some similar tools in existence, much more in-depth or complexity than this project will be.
-
-[Canva](https://www.canva.com/) • [PicMonkey](https://www.picmonkey.com/) • [DreamItAlive](https://www.dreamitalive.com/) • [Corkulous](https://www.corkulous.com/) • [Desygner](https://desygner.com/)
- 
 ------
-### Documents
+## Documents
 
 Diagram of project, table relationships and a very early idea of how the project will flow.
 ![Project Diagram][project-diagram]
+<!-- [![Project Name Screen Shot][project-screenshot]](https://example.com) -->
+
 
 ------
-### Built With
+## Built With
 
 [C#](https://docs.microsoft.com/en-us/dotnet/csharp/) • [T-SQL](https://docs.microsoft.com/en-us/sql/t-sql/language-reference?view=sql-server-ver15) • [.NET Core](https://dotnet.microsoft.com/download) • [JavaScript](https://www.javascript.com/) • [CSS](https://www.w3schools.com/css/) • [HTML](https://www.w3schools.com/html/)
 
+------
+## References
 
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Idea will be to get this application usable in a way that anyone can make their own Vision Board + Tasks toward achieving their goals.
-
-*For examples, please refer to: <a href="#references">References :paperclip:</a>*
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-Completed:
-1. Database (SQL Server). 🗹
-2. Migrate Database to Azure. 🗹
-3. To-Do List: Goal/Task/Step (MVC). 🗹
-4. User (MVC) and Email for Password Reset. 🗹
-5. Manage basic authentication / authorization. 🗹
-6. Complete project's basic functions to release. 🗹
+Some similar tools in existence, much more in-depth or complexity than this project will be.
+[Canva](https://www.canva.com/) • [PicMonkey](https://www.picmonkey.com/) • [DreamItAlive](https://www.dreamitalive.com/) • [Corkulous](https://www.corkulous.com/) • [Desygner](https://desygner.com/)
 	
-Backlog:
-1. Figure out Vision Board (MVC+JS) configuration. ☐
-2. Info/Notifications when navigating webpages. ☐
-3. Add functions to auto-complete Goals/Tasks. ☐
-4. Enable Pagination / allow for many pages. ☐
-5. Browser and Device Compatibility where feasible. ☐
-	
-Optional:
-1. Custom front-end design. 🗹
-2. Theme colors through JavaScript. 🗹
-3. Potentially add in a Calendar (MVC)? ☐
-4. Modal page 'popups' through Bootstrap. ☐ 
-5. OAuth potentially for easier login / SSO. ☐ 
-6. Accelerated Mobile Pages / Mobile App?. ☐
-7. Terms & Conditions + Privacy Policy. ☐
-
-*See the [open issues](https://github.com/jedington/Canvas-Your-Goals/issues) for a list of proposed features (and known issues).*
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributing (for now) is closed. Project is just beginning and it's also part of my grading in the classes I'm in 👀.
-
-Feel free to fork it along the way and give input if you want though! I fully support collaborative environments.
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Twitter: [@arcanicvoid](https://twitter.com/arcanicvoid) • LinkedIn: [julian-edington](https://www.linkedin.com/in/julian-edington/)
-
-<!-- ACKNOWLEDGEMENTS -->
+------
 ## Acknowledgements
 * [othneildrew](https://github.com/othneildrew/Best-README-Template/) (especially helpful; original creator of this README format)
 
@@ -207,11 +178,6 @@ Twitter: [@arcanicvoid](https://twitter.com/arcanicvoid) • LinkedIn: [julian-e
 
 [Loaders.css](https://connoratherton.com/loaders) • [Slick Carousel](https://kenwheeler.github.io/slick) • [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll) • [Sticky Kit](http://leafo.net/sticky-kit) • [JVectorMap](http://jvectormap.com) • [Font Awesome](https://fontawesome.com)
 
-
-<!-- Demo 
-## Demo
-[Canvas-Your-Goals-Diagram.pdf](http://jedington.github.io/Canvas-Your-Goals/docs/Canvas-Your-Goals-Wireframe.pdf)
--->
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
@@ -229,5 +195,5 @@ Twitter: [@arcanicvoid](https://twitter.com/arcanicvoid) • LinkedIn: [julian-e
 [linkedin-url]: https://www.linkedin.com/in/julian-edington/
 [twitter-shield]: https://img.shields.io/twitter/follow/arcanicvoid?style=for-the-badge&logo=twitter&colorB=555
 [twitter-url]: https://twitter.com/arcanicvoid
-[product-screenshot]: images/screenshot.png
+[project-screenshot]: images/screenshot.png
 [project-diagram]: images/Canvas-Your-Goals.svg
