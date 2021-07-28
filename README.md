@@ -190,7 +190,7 @@ Some similar tools in existence, much more in-depth or complexity than this proj
 [issues-shield]: https://img.shields.io/github/issues/jedington/Canvas-Your-Goals.svg?style=for-the-badge
 [issues-url]: https://github.com/jedington/Canvas-Your-Goals/issues
 [license-shield]: https://img.shields.io/github/license/jedington/Canvas-Your-Goals.svg?style=for-the-badge
-[license-url]: https://github.com/jedington/Canvas-Your-Goals/blob/master/LICENSE.txt
+[license-url]: https://github.com/jedington/Canvas-Your-Goals/blob/master/LICENSE.html
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/julian-edington/
 [twitter-shield]: https://img.shields.io/twitter/follow/arcanicvoid?style=for-the-badge&logo=twitter&colorB=555
