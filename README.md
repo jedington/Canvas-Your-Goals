@@ -69,7 +69,8 @@ Completed:
 4. User (MVC) and Email for Password Reset. 🗹
 5. Manage basic authentication / authorization. 🗹
 6. Complete project's basic functions to release. 🗹
-	
+7. Terms & Conditions + Privacy Policy. 🗹
+
 Backlog:
 1. Figure out Vision Board (MVC+JS) configuration. ☐
 2. Info/Notifications when navigating webpages. ☐
@@ -84,7 +85,6 @@ Optional:
 4. Modal page 'popups' through Bootstrap. ☐ 
 5. OAuth potentially for easier login / SSO. ☐ 
 6. Accelerated Mobile Pages / Mobile App? ☐
-7. Terms & Conditions + Privacy Policy. ☐
 
 *See the [open issues](https://github.com/jedington/Canvas-Your-Goals/issues) for a list of proposed features (and known issues).*
 
