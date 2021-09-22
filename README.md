@@ -100,12 +100,12 @@ We all have goals that are originally ideas we want to accomplish at some point.
 ------
 ### To-Do List
 
-The first part of the project is a list of tasks that need to be accomplished in order to attain the certain goals. These goals will be on a separate page from the custom page, or vision board. The user should be allowed to create their own separate goals, the tasks under goals, and steps--if necessary--dependent on complexity—in order to achieve said goals. This part of the project should be much simpler than the first to implement from a developer perspective, but this does not mean it will be easy either.
+The first part of the project is a list of tasks that need to be accomplished in order to attain the certain goals. These goals will be on a separate page from the custom page, or vision board. The user should be allowed to create their own separate goals, the tasks under goals, and steps—if necessary, dependent on complexity—in order to achieve said goals. This part of the project should be much simpler than the first to implement from a developer perspective, but this does not mean it will be easy either.
 
 ------
 ### Vision Board
 
-The second--and much more difficult--feature of the project will have a customizable webpage, intended emulate a vision board’s features of something pleasant and inspiring to look at. Many vision board applications have the capability to add images, objects and shapes, as well as text inputs, with the addition of being able to move and adjust the size of them wherever on the page. Like many goals, you have to be realistic, and this part of the project might be too complicated at the moment for me to develop in the next few months. With that in mind, I am fully aware that I may have to settle with some of the vision board features to be simpler than most, or even not released (examples: <a href="#references">References :paperclip:</a>).
+The second—and much more difficult—feature of the project will have a customizable webpage, intended emulate a vision board’s features of something pleasant and inspiring to look at. Many vision board applications have the capability to add images, objects and shapes, as well as text inputs, with the addition of being able to move and adjust the size of them wherever on the page. Like many goals, you have to be realistic, and this part of the project might be too complicated at the moment for me to develop in the next few months. With that in mind, I am fully aware that I may have to settle with some of the vision board features to be simpler than most, or even not released (examples: <a href="#references">References :paperclip:</a>). Recently found library called Fabric.js to make use of with this type of project.
 
 ------
 ### Functions
@@ -131,7 +131,8 @@ The website or application will have register and login capabilities for User ac
 ------
 ### Compatibility
 
-I consider this to be an important factor, with as much flexibility as possible. Would be ideal to have compatibility across many browsers as well as various types of devices, depending on the operation systems used as well as the size of the native screens the devices may use. And most importantly, usable from the public cloud / internet regardless of what type of browser or device. Additional systems like caching, script minification, CDNs, and other features would be nice for performance/availability, however reach outside the scope or requirements of this current project.
+I consider this to be an important factor, with as much flexibility as possible. Would be ideal to have compatibility across many browsers as well as various types of devices, depending on the operation systems used as well as the size of the native screens the devices may use. And most importantly, usable from the public cloud / internet regardless of what type of browser or device. Additional systems like caching, CDNs, and other features would be nice for performance/availability, however reach outside the minimal scope of this current project.
+
 </details>
 
 ------
@@ -155,7 +156,6 @@ Some similar tools in existence, much more in-depth or complexity than this proj
 	
 ------
 ## Acknowledgements
-* [othneildrew](https://github.com/othneildrew/Best-README-Template/) (especially helpful; original creator of this README format)
 
 [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet) • [Img Shields](https://shields.io) • [Choose an Open Source License](https://choosealicense.com) • [GitHub Pages](https://pages.github.com) • [Animate.css](https://daneden.github.io/animate.css)
 
