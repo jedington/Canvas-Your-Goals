@@ -6,11 +6,9 @@
 # Linguist overrides
 *.yml linguist-detectable=true
 *.yml linguist-language=YAML
-*.yml linguist-documentation=false
 
 *.json linguist-detectable=true
 *.json linguist-language=JSON
-*.json linguist-documentation=false
 
 #- *.md linguist-language=Markdown
 #- *.md linguist-documentation=false
