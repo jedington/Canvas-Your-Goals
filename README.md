@@ -152,7 +152,7 @@ Diagram of project, table relationships and a very early idea of how the project
 ## References
 
 Some similar tools in existence, much more in-depth or complexity than this project will be.
-[Canva](https://www.canva.com/) • [PicMonkey](https://www.picmonkey.com/) • [DreamItAlive](https://www.dreamitalive.com/) • [Corkulous](https://www.corkulous.com/) • [Desygner](https://desygner.com/)
+- [Canva](https://www.canva.com/) • [PicMonkey](https://www.picmonkey.com/) • [DreamItAlive](https://www.dreamitalive.com/) • [Corkulous](https://www.corkulous.com/) • [Desygner](https://desygner.com/)
 	
 ------
 ## Acknowledgements
