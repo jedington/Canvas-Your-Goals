@@ -13,15 +13,16 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  
   <!--
-  <a href="https://github.com/jedington/Canvas-Your-Goals/">
+  <a href="https://github.com/jedington/Canvas-Your-Goals">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a> 
   -->
-
-  <h3 align="center">Canvas Your Goals</h3>
-
+  <h3 align="center">
+  <img 
+    src="https://readme-typing-svg.herokuapp.com?lines=Canvas%20Your%20Goals&center=true&size=30" 
+    alt="Canvas Your Goals"/> 
+  </h3>
   <p align="center">
     An MSSA 18-week project + continued afterwards (because why not)
     <br />
