@@ -66,10 +66,31 @@
 # Text files where line endings should be preserved
 *.patch    -text
 
+# Linguist overrides
+*.yaml linguist-detectable=true
+*.yml linguist-detectable=true
+*.yaml linguist-language=YAML
+*.yml linguist-language=YAML
+
+*.xml linguist-detectable=true
+*.xml linguist-language=XML
+
+*.json linguist-detectable=true
+*.json linguist-language=JSON
+
+Vagrantfile linguist-detectable=true
+Vagrantfile linguist-language=Ruby
+
+Jenkinsfile linguist-detectable=true
+Jenkinsfile linguist-language=Groovy
+
+Makefile linguist-detectable=true
+Makefile linguist-language=C
+
 # Excluded files from exporting
-.gitattributes export-ignore
-.gitignore     export-ignore
-.gitkeep       export-ignore
+#.gitattributes export-ignore
+#.gitignore     export-ignore
+#.gitkeep       export-ignore
 
 ###############################################################################
 # Set default behavior for command prompt diff.
@@ -102,18 +123,3 @@
 #*.modelproj merge=binary
 #*.sqlproj   merge=binary
 #*.wwaproj   merge=binary
-
-
-########################################
-# PROJECT SPECIFIC GITATTRIBUTES SETUP #
-########################################
-
-# Linguist overrides
-*.yml linguist-detectable=true
-*.yml linguist-language=YAML
-
-*.json linguist-detectable=true
-*.json linguist-language=JSON
-
-*.sql linguist-detectable=true
-*.sql linguist-language=sql
