@@ -1,29 +1,19 @@
 <!-- PROJECT SHIELDS -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-[![Twitter][twitter-shield]][twitter-url]
-
-
 
 <!-- PROJECT LOGO -->
-<br />
-<p align="center">
-  <!--
-  <a href="https://github.com/jedington/Canvas-Your-Goals">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a> 
-  -->
-  <h3 align="center">
+<p>
+  <h3>
   <img 
     src="https://readme-typing-svg.herokuapp.com?lines=Canvas%20Your%20Goals&center=true&size=30" 
     alt="Canvas Your Goals"/> 
   </h3>
-  <p align="center">
+  <p>
     An MSSA 18-week project + continued afterwards (because why not)
     <br />
     <br /> 
@@ -34,8 +24,6 @@
     <a href="https://github.com/jedington/Canvas-Your-Goals/issues">Report Bug(s) // Request Feature(s)</a>
   </p>
 </p>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -164,7 +152,6 @@ Some similar tools in existence, much more in-depth or complexity than this proj
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/jedington/Canvas-Your-Goals.svg?style=for-the-badge
 [contributors-url]: https://github.com/jedington/Canvas-Your-Goals/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/jedington/Canvas-Your-Goals.svg?style=for-the-badge
@@ -176,8 +163,7 @@ Some similar tools in existence, much more in-depth or complexity than this proj
 [license-shield]: https://img.shields.io/github/license/jedington/Canvas-Your-Goals.svg?style=for-the-badge
 [license-url]: https://github.com/jedington/Canvas-Your-Goals/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/julian-edington/
-[twitter-shield]: https://img.shields.io/twitter/follow/arcanicvoid?style=for-the-badge&logo=twitter&colorB=555
-[twitter-url]: https://twitter.com/arcanicvoid
+[linkedin-url]: https://www.linkedin.com/in/julian-edington
+
 [project-screenshot]: images/screenshot.png
 [project-diagram]: images/Canvas-Your-Goals.svg
